@@ -5,8 +5,15 @@
 # Session Data files
 .RData
 
+# Other R data files
+.rda
+.rdb
+
 # User-specific files
 .Ruserdata
+
+# Data directory
+/Data
 
 # Example code in package build process
 *-Ex.R
