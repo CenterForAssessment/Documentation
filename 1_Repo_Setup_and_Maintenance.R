@@ -8,7 +8,7 @@
 setwd("./Documentation")
 
 ###   Locate the "Universal_Content" directory
-universal.content.path <- file.path("..", "..", "State_Alt_Analyses", "Universal_Content")
+universal.content.path <- file.path("..", "..", "..", "Universal_Content")
 
 ###   Install/update packages used in the Learning Loss Report
 source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Packages.R"))
