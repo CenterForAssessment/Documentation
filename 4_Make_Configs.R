@@ -4,6 +4,9 @@
 ###   Create/customize/complete the required YAML and RMD file config lists
 #####
 
+###   Locate the "Universal_Content" directory
+universal.content.path <- file.path("..", "..", "State_Alt_Analyses", "Universal_Content")
+
 ###
 ###   Merge custom and universal config lists
 ###
@@ -113,4 +116,4 @@ source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", 
 createReportScripts(report_config=report.config, rmd_file_list=rmd.files)
 
 ###   Save report YAML and file configurations
-save(list=c("report.config", "rmd.files"), file = "Report_Configuration_MetaData.rda")
+save(list=c("report.config", "rmd.files"), file = "CO_Report_Configuration_MetaData.rda")
