@@ -15,6 +15,15 @@
 # Data directory
 /Data
 
+# Literasee Assets (except /rmd)
+/assets/css
+/assets/debug_tools
+/assets/images
+/assets/js
+/assets/pandoc
+/assets/rmd/bookdown
+/assets/rmd/pagedown
+
 # Example code in package build process
 *-Ex.R
 
