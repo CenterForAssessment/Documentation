@@ -5,7 +5,7 @@
 #####
 
 ###   Locate the "Universal_Content" directory
-universal.content.path <- file.path("..", "..", "State_Alt_Analyses", "Universal_Content")
+universal.content.path <- file.path("..", "..", "..", "Universal_Content")
 
 
 ###
