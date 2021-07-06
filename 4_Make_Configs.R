@@ -4,6 +4,10 @@
 ###   Create/customize/complete the required YAML and RMD file config lists
 #####
 
+###   Locate the "Universal_Content" directory
+universal.content.path <- file.path("..", "..", "State_Alt_Analyses", "Universal_Content")
+
+
 ###
 ###   Merge custom and universal config lists
 ###
