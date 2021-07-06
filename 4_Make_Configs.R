@@ -4,30 +4,36 @@
 ###   Create/customize/complete the required YAML and RMD file config lists
 #####
 
+###   Load required package(s)
+require(Literasee)
+
 ###   Locate the "Universal_Content" directory
 universal.content.path <- file.path("..", "..", "..", "Universal_Content")
-
 
 ###
 ###   Merge custom and universal config lists
 ###
+
+##   Remove existing objects before (re)running
+if (exists("report.config")) rm(report.config)
+if (exists("rmd.files")) rm(rmd.files)
 
 ##   The "custom.config" list is created to supply unique client/state info.
 ##   It can also be used to override some of the Universal settings (authors, etc.)
 
 custom.config <- list(
   client.info = list(
-    state.name = "Demonstration COVID", # required at a minimum
-    state.abv = "D.C.", # for cover page, not SGPstateData
-    city.name = "Washington",
-    organization = "Demonstration Department of Education",
-    org.head = "Joseph R. Biden, Jr.",
-    github.repo = "CenterForAssessment/SGP_Research/tree/master/Demonstration/Learning_Loss_Analysis",
-    acknowledgements = "the entire staff of the DDoE Assessment and Accountability Office, and particularly Maggie Q. Public,"
+    state.name = "Indiana", # required at a minimum
+    state.abv = "IN", # for cover page, not SGPstateData
+    city.name = "Indianapolis",
+    organization = "Indiana Department of Education",
+    org.head = "Dr. Katie Jenner, Secretary of Education",
+    github.repo = "CenterForAssessment/SGP_Research/tree/master/Indiana/Learning_Loss_Analysis",
+    acknowledgements = "the entire staff of Office of School Accountability, and particularly Maggie Paino, Brenda Erbse and Vanessa Deveau Bachle,"
   ),
   # Override defaults for author/Affil
   top.level = list(  #  Title/subtitle, author.names, author.affil, date
-    title = "Example Academic Impact Analysis",
+    title = "Academic Impact in a Year of Disruptions",
     subtitle = "Student Achievement and Growth during the COVID-19 Pandemic",
     draft = TRUE  #  default if TRUE - "DRAFT REPORT -- DO NOT CITE OR CIRCULATE" #
   ),
@@ -41,64 +47,73 @@ custom.config <- list(
     min.size.school = 15,  #  N size cutoff - exclude SCHOOLs with fewer than X students from summaries/analyses
     min.size.district = 50, # N size cutoff - exclude DISTRICTs with fewer than X students from summaries/analyses
     sgp.abv = list( # SGP package abbreviation for accessing relevant SGPstateData meta-data.
-      State_Assessment = "DEMO_COVID",
+      State_Assessment = "IN",
       College_Entrance = c(),
-      ELP_Assessment = c(),
+      ELP_Assessment = "WIDA_IN",
       Interim_Assessment = c()
     ),
     years = list(
-      State_Assessment = as.character(c(2017:2019, 2021)),
+      State_Assessment = as.character(2016:2019, 2021),
       College_Entrance = c(),
-      ELP_Assessment = c(),
-      Interim_Assessment = c()
+      ELP_Assessment = as.character(2017:2021),
+      Interim_Assessment = c("2021.1", "2021.2")
     ),
     GL_subjects = list(
       State_Assessment = c("ELA", "MATHEMATICS"),
       College_Entrance = c(),
-      ELP_Assessment = c(),
-      Interim_Assessment = c()
+      ELP_Assessment = "READING",
+      Interim_Assessment = c("ELA", "MATHEMATICS")
     ),
     GL_text = list(
       State_Assessment = "ELA and mathematics",
       College_Entrance = c(),
-      ELP_Assessment = c(),
-      Interim_Assessment = c()
+      ELP_Assessment = "Overall ELP",
+      Interim_Assessment = "ELA and mathematics"
     ),
     test.name = list(
-      State_Assessment = "Demonstration Student Assessment Program",
+      State_Assessment = "Indiana Learning Evaluation and Readiness Network",
       College_Entrance = c(),
-      ELP_Assessment = c(),
-      Interim_Assessment = c()
+      ELP_Assessment = "WIDA ACCESS",
+      Interim_Assessment = "NWEA Measures of Academic Progress"
     ),
     test.abv = list(
-      State_Assessment = "DEMO_COVID",
+      State_Assessment = "ILEARN",
       College_Entrance = c(),
-      ELP_Assessment = c(),
-      Interim_Assessment = c()
+      ELP_Assessment = "WIDA",
+      Interim_Assessment = "MAP Growth"
     ),
     test.url = list(
-      State_Assessment = "https://centerforassessment.github.io/SGPdata/",
+      State_Assessment = "https://www.in.gov/doe/",
       College_Entrance = c(),
-      ELP_Assessment = c(),
-      Interim_Assessment = c()
+      ELP_Assessment = "https://wida.wisc.edu/memberships/consortium/in",
+      Interim_Assessment = "https://www.nwea.org/map-growth/"
     ),
     grades = list(
       State_Assessment = as.character(3:8),
       College_Entrance = c(),
-      ELP_Assessment = c(),
-      Interim_Assessment = c()
+      ELP_Assessment = as.character(0:12),
+      Interim_Assessment = as.character(0:10)
     ),
     demographics = list(
-      State_Assessment = c("ETHNICITY", "FREE_REDUCED_LUNCH_STATUS", "ELL_STATUS", "IEP_STATUS", "GENDER"),
+      State_Assessment = c("SPECIAL_EDUCATION_STATUS", "ENGLISH_LANGUAGE_LEARNER_STATUS", "SOCIO_ECONOMIC_STATUS", "GENDER", "ETHNICITY"),
       College_Entrance = c(),
       ELP_Assessment  =  c(),
-      Interim_Assessment = c()
+      Interim_Assessment = c("SPECIAL_EDUCATION_STATUS", "ENGLISH_LANGUAGE_LEARNER_STATUS", "SOCIO_ECONOMIC_STATUS", "GENDER", "ETHNICITY")
     ),
     gof.path = list(
-      State_Assessment = file.path("..", "Goodness_of_Fit"),
+      State_Assessment = file.path("..", "..", "..", "..", "Indiana", "Goodness_of_Fit"),
       College_Entrance = c(),
-      ELP_Assessment  =  c(),
+      ELP_Assessment  =  file.path("..", "..", "..", "..", "WIDA_IN", "Goodness_of_Fit"),
       Interim_Assessment = c()
+    ),
+    sgp.grades = list(
+      Interim_Assessment = as.character(0:10) # Even Kindergarten has Fall to Winter growth
+    ),
+    sgp.max.order = list(
+      State_Assessment = 2L,
+      College_Entrance = c(),
+      ELP_Assessment = 2L,
+      Interim_Assessment = 1L
     )
   )
 )
@@ -108,18 +123,19 @@ source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", 
 
 ##   The following script will merge the rmd.files (universal) and custom.files lists and return 'rmd.files' to be used in next steps
 # custom.files <- list(...) # override defaults if desired.  Otherwise a message that universal list will be used.
-source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
+
+# source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
 
 ##    Besides adding/reordering Rmd files though custom.files, one can request a
 ##    subset of files. This will result in a truncated report, allowing chapter/section
 ##    editing/development. You always need to include `setup.Rmd` and `params.Rmd`!
 
-# custom.files <- list(
-#   report = list(
-#     file.order = c("setup.Rmd", "params.Rmd", "0_Executive_Summary.Rmd")),
-#   appendices = c())
-#
-# source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
+custom.files <- list(
+  report = list(
+    file.order = c("setup.Rmd", "params.Rmd", "0_Executive_Summary.Rmd")),
+  appendices = c())
+
+source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
 
 
 #####

@@ -1,5 +1,5 @@
 #####
-###   Set up the Demonstration Learning Loss Analysis Report directory
+###   Set up the INDIANA Learning Loss Analysis Report directory
 ###   Install and update `R` packages required to run analyses and create report.
 ###   Copy Literasee package assets, custom content templates, and other scripts.
 #####
