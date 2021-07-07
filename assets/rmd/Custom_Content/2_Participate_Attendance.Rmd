@@ -1,0 +1,23 @@
+## Attendance
+
+Table `r tblNum(1)` provides frequencies and proportions associated with student
+attendance. This will most likely be something provided by the state.
+
+This might script will likely need to go in the customized RMD file as the format
+and content will likely be VERY state specific.
+
+Lorem ipsum dolor sit amet, in eu augue lacinia sed rutrum ac et. Fusce et nam
+felis eros arcu a sem. Eros elementum sollicitudin non, phasellus id mus. Mauris
+ex ac felis egestas sed aenean, in quam quis amet. Ac, sed hac fames placerat
+massa convallis facilisi. Senectus lao reet libero ut ligula neque fringilla.
+Consectetur elit eleifend, commodo purus.
+
+Torquent vulputate eget ligula pretium cursus nibh mauris, nisl euismod vitae sem
+volutpat. Auctor lectus. Sed scelerisque pellentesque, ut sit elit. Pellentesque
+aenean non ullamcorper ut, risus, morbi. Mollis metus neque velit nec sed inceptos
+nullam. Mollis duis venenatis massa posuere in dui maximus in diam. Parturient
+ex in risus porta rhoncus at leo id ut in. Blandit taciti quis est mollis quam
+condimentum ac sed risus conubia urna et pellentesque. Ac tellus ultricies erat
+magna eleifend nisi sed dolor in. Maecenas potenti at non et? Non fusce tellus
+cubilia luctus velit. Enim purus, ligula, ante ac. Porta dui dapibus consectetur
+et maximus purus consectetur ante egestas mattis.

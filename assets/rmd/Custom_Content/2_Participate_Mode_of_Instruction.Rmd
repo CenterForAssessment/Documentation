@@ -1,0 +1,18 @@
+## Mode of instruction
+
+Table `r tblNum(1)` provides frequencies and proportions associated with student
+mode of instruction (in-person, remote, hybrid).
+
+Lorem ipsum dolor sit amet, in eu augue lacinia sed rutrum ac et. Fusce et nam
+felis eros arcu a sem. Eros elementum sollicitudin non, phasellus id mus. Mauris
+ex ac felis egestas sed aenean, in quam quis amet. Ac, sed hac fames placerat
+massa convallis facilisi. Senectus lao reet libero ut ligula neque fringilla.
+Consectetur elit eleifend, commodo purus.
+
+Arcu dolor at nullam sed torquent tellus non. Cubilia eget in nisi, penatibus aenean
+congue lorem et ornare tristique leo facilisi orci vel. Non varius vestibulum nam
+morbi pe llentesque sit. Vitae in eget eu sed elit, et ad lacus, eleifend nisl,
+potenti eget egestas. Eros eu porttitor, tristique fames, et pellentesque lacinia
+et. Porttitor in etiam ac nec montes. Ante finibus purus neque ante et. Et amet
+suspendisse potenti at bibendum vivamus bibendum sapien. Eget egestas pharetra
+metus phasellus volutpat non donec sed id.

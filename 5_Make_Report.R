@@ -6,8 +6,8 @@
 setwd("./Documentation")
 
 ###   Load/Format/Subset Report Data
-load("./Data/Report_Data.Rdata")
-load("./Data/Report_Analyses.Rdata")
+load("../Data/Report_Data.Rdata")
+load("../Data/Report_Analyses.Rdata")
 
 ###   Load required packages
 require(Literasee)

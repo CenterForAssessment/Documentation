@@ -1,0 +1,11 @@
+## School closures
+
+This is another example of a script that is likely to be highly state-specific
+in both content and format. Probably best to keep this in the customized file
+directory.
+
+Lorem ipsum dolor sit amet, in eu augue lacinia sed rutrum ac et. Fusce et nam
+felis eros arcu a sem. Eros elementum sollicitudin non, phasellus id mus. Mauris
+ex ac felis egestas sed aenean, in quam quis amet. Ac, sed hac fames placerat
+massa convallis facilisi. Senectus lao reet libero ut ligula neque fringilla.
+Consectetur elit eleifend, commodo purus.
