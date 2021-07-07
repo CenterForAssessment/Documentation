@@ -1,0 +1,90 @@
+PRM__draft.text__PRM
+
+At the end of January 2020, the World Health Organization declared the novel
+coronavirus (COVID-19) a public health emergency of international concern and the
+United States Secretary of Health and Human Services declared a public health
+emergency for the United States. Although many continued to carry out their daily
+lives without interruption, drastic changes began to occur including in Indiana
+when Governor Eric Holcomb declared a [public health disaster emergency](https://www.in.gov/gov/files/20-02ExecutiveOrderDeclarationofPublicHealthEmergencyforCOVID-19FINAL.pdf)
+on March 6, 2020. Executive orders followed from Governor Holcomb mandating that
+all public and private schools close and cease in-person instruction
+[temporarily](https://www.in.gov/gov/files/EO_20-05.pdf), and ultimately for the
+[remainder of the 2019-2020 school year](https://www.in.gov/gov/files/Executive-Order-20-16-Education.pdf).
+
+The sudden onset of these changes presented school leaders and educators with
+immediate challenges and they quickly adapted operations to provide the services
+upon which students and families relied and to deliver continued access to education.
+Governor Holcomb [cancelled the administration of all statewide assessments](https://www.in.gov/gov/files/EO_20-05.pdf)
+and the Indiana Department of Education (IDOE) [requested and received a waiver](
+https://www.doe.in.gov/sites/default/files/essa/indiana-essa-waiver-request.pdf;
+https://www.doe.in.gov/sites/default/files/essa/used-essa-waiver-approval.pdf)
+from the federal requirement to administer statewide assessments.
+
+On June 11, 2020, Governor Holcomb announced that public and private schools were
+[permitted to reopen on July 1, 2020](https://www.in.gov/gov/files/Executive-Order-20-32-Stage-4.pdf)
+to provide in-person instruction during the 2020-2021 school year. In collaboration
+with other agencies, the IDOE published "Indiana’s Considerations for Learning and
+Safe Schools" [(IN-CLASS)](https://www.doe.in.gov/covid-19) to provide guidance
+for schools when navigating new protocols for re-opening and re-entry of school
+buildings. Ultimately, the IN-CLASS guidance signaled to schools that a return to
+in-person instruction did not equate to a return to "normal".
+
+TXT__tbl.txt__TXT 
+
+PRM__state.name__PRM, like all states, is currently grappling with evaluating the
+academic impact the pandemic has had, as well as how to make efficient, targeted
+use of resources to resources to ameliorate learning loss. This report summarizes
+achievement (status) and growth analyses [@sgp2020] pursued towards those ends. Historical
+TXT__test.name.abv__TXT data was used to establish "fair" achievement comparisons
+and to derive baseline student growth percentiles (i.e., describing 2021 growth
+relative to 2019 norms). Data in TXT__test.subj__TXT was used in these investigations.
+
+###  Research Questions
+
+This paper examines the following questions in detail:
+
+  A) To what extent did the disruptions in educational programming due to COVID-19
+     impact student academic performance and learning outcomes?
+      1. Who are the students considered in this research? (sample/comparison group)
+      2. What was the experienced learning loss in English/language arts and mathematics
+         for the student populations and communities in Indiana?
+          - impact based on pre-covid school year to 20/21 school year
+              *Formative (fall to fall; winter to winter; spring to spring)
+              *Summative (2019 - 2021)
+          - changes within 20/21 school year (fall to winter; winter to spring)
+      3. What disparities in impact exist between student populations and communities in Indiana?
+          a) Racial/ethnic subgroups
+          b) Special education status
+          c) English learner status
+          d) Poverty status
+          e) Type of community (urban, suburban, rural, etc)
+          f) Mode of instruction
+          g) School type? (Tpub, Cpub, Nonpub/choice)
+  B) What is the anticipated recovery time associated with the academic impact
+     experienced due to the disruptions in educational programming due to COVID-19?
+
+###  Methods
+
+  A) Indicate consultation w/ TAC
+  B) How do we define "learning loss"?
+  C) Methods used to identify/determine learning loss
+      1. Status: status changes in proficiency
+      2. Growth: Use of baseline growth norms to provide context/comparison to determine loss
+      3. Note: provide explanation of how "apples to apples" comparison achieved to confirm reliability of findings
+  D) Established "impact" statuses and definitions
+      1. No impact
+          a) explain how it’s determined that "no impact" applies
+          b) Indicate estimated length of recovery time
+      2. Minor impact
+          a) explain how it’s determined that "minor impact" applies
+          b) Indicate estimated length of recovery time
+      3. Moderate impact
+          a) explain how it’s determined that "moderate impact" applies
+          b) Indicate estimated length of recovery time
+      4. Significant impact
+          a) explain how it’s determined that "significant impact" applies
+          b) Indicate estimated length of recovery time
+
+##  Preliminary Findings
+
+Spoiler alert! Turd is IN the punchbowl...

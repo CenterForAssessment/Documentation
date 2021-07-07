@@ -1,0 +1,21 @@
+##  Research Questions
+
+  A) To what extent did the disruptions in educational programming due to COVID-19
+     impact student academic performance and learning outcomes?
+      1. Who are the students considered in this research? (sample/comparison group)
+      2. What was the experienced learning loss in English/language arts and mathematics
+         for the student populations and communities in Indiana?
+          - impact based on pre-covid school year to 20/21 school year
+              *Formative (fall to fall; winter to winter; spring to spring)
+              *Summative (2019 - 2021)
+          - changes within 20/21 school year (fall to winter; winter to spring)
+      3. What disparities in impact exist between student populations and communities in Indiana?
+          a) Racial/ethnic subgroups
+          b) Special education status
+          c) English learner status
+          d) Poverty status
+          e) Type of community (urban, suburban, rural, etc)
+          f) Mode of instruction
+          g) School type? (Tpub, Cpub, Nonpub/choice)
+  B) What is the anticipated recovery time associated with the academic impact
+     experienced due to the disruptions in educational programming due to COVID-19?

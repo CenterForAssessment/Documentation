@@ -1,0 +1,92 @@
+## Legislative Charge
+
+During the 2021 legislative session, the Indiana General Assembly passed House
+Enrolled Act 1514, and Governor Holcomb signed into law Public Law 211-2021. Public
+Law 211-2021 added Ind. Code &sect; 20-26-5-40.6^[[IC 20-26-5-40.6 et seq.](http://iga.in.gov/legislative/laws/2021/ic/titles/020/#20-26-5-40.6)],
+which required the following of the IDOE:
+
+
+<ul>
+<strong>IC 20-26-5-40.6	Learning loss study; report; report benchmark assessment data; release of benchmark data</strong>
+
+Sec. 40.6.
+
+	(a) Subject to subsection (c), the department shall, in collaboration
+	    with the state board, conduct a learning loss study regarding students
+	    in kindergarten through grade 10 for the 2020-2021 school year and the
+	    2021-2022 school year. The study may include the following:
+		(1) Which specific domains have significant learning loss for students
+			in kindergarten through grade 10.
+		(2) What differences exist in:
+			(A) domain performance;
+			(B) domain growth; or
+			(C) both domain performance and domain growth;
+				for specific subgroups, including students with disabilities
+				and English language learners.
+		(3) What learning gaps are present in foundational skills,
+			specifically literacy and numeracy for early grade levels.
+		(4) What are the overall student learning loss or gaps in education in
+			Indiana due to the disruption in student education caused by the
+			coronavirus disease (COVID-19).
+		(5) Any conclusions or recommendations to address student learning
+			loss or gaps in education, including recommendations regarding
+			remediation.
+	(b) The department shall do the following:
+		(1) Prepare a report regarding the 2020-2021 school year and a report
+			regarding the 2021-2022 school year that includes information
+			regarding the study described in subsection (a), including any
+			conclusions and recommendations as described in subsection (a)(5).
+		(2) Not later than December 1, 2021, submit the report regarding the
+			2020-2021 school year and not later than December 1, 2022, submit
+			the report regarding the 2021-2022 school year to the:
+			(A) governor;
+			(B) state board; and
+			(C) legislative council in an electronic format under IC 5-14-6.
+	(c) The department:
+		(1) shall conduct research for the study described in subsection (a)
+			after a review of the research methodology by the Indiana
+			technical advisory committee;
+		(2) may include the use of summative and formative data sets in
+			conducting the study under subsection (a); and
+		(3) may use a third party vendor in conducting the study under
+			subsection (a).
+
+</ul>
+
+
+On March 11, 2021, the United States Congress passed the American Rescue Plan Act,
+which provided $122.7 billion in supplemental elementary and secondary school
+emergency relief funding. Section 2001 of the American Rescue Plan Act requires
+each State to reserve at least five (5) percent of the total amount of grant funds
+awarded to carry out activities to address learning loss by supporting the
+implementation of evidence-based interventions that respond to students’ academic,
+social, and emotional needs and address the disproportionate impact of the coronavirus
+on the student subgroups, students experiencing homelessness, and children and youth
+in foster care.^[https://www.congress.gov/bill/117th-congress/house-bill/1319/text#HCC377403618A48DCB8A06CA71E565BE3]
+
+Pursuant to Ind. Code &sect; 20-26-5-40.6(c)(3), the IDOE contracted with the
+National Center for the Improvement of Educational Assessment Inc. (Center for
+Assessment) to conduct the study of the impact of COVID-19 disruptions on student
+academic outcomes.^[https://contracts.idoa.in.gov/idoacontractsweb/PUBLIC/0000000000000000000053337-000.pdf]
+The project consists of two phases: phase one focuses on understanding the academic
+"impact" related to COVID-19 and phase two focuses on understanding the academic
+"recovery" related to COVID-19. Phase one is associated with the summative and
+formative data sets for the 2020-2021 academic year, while phase two will be
+associated with the summative and formative data sets for the 2021-2022 school
+year. Dr. Damian Betebenner, a Senior Associate with the Center for Assessment,
+serves as the lead researcher for both phases of this study. Dr. Betebenner
+presented the research methodology to Indiana’s technical advisory committee at
+its Spring 2021 meeting for review, as required by Ind. Code &sect; 20-26-5-40.6(c)(1).
+
+
+## Purpose
+
+It is important to note that the findings of this report are not to serve as a
+form of school "accountability" or to focus solely on any "drops" in overall
+proficiency rates. Further, this report does not make any determinations regarding
+the cause of any negative academic impacts. Rather, the purpose of this report is
+to provide context to student performance data by identifying which students were
+impacted, in what content areas those students were impacted, and the magnitude
+of that impact. By understanding what occurred, stakeholders can more intentionally
+direct resources and support to drive effective and evidence-based recovery
+strategies that respond to students’ academic, social, and emotional needs.

@@ -1,0 +1,132 @@
+## Methodology
+
+  A) Indicate consultation w/ TAC
+  B) How do we define "learning loss"?
+  C) Methods used to identify/determine learning loss
+      1. Status: status changes in proficiency
+      2. Growth: Use of baseline growth norms to provide context/comparison to determine loss
+      3. Note: provide explanation of how "apples to apples" comparison achieved to confirm reliability of findings
+  D) Established "impact" statuses and definitions
+      1. No impact
+          a) explain how it’s determined that "no impact" applies
+          b) Indicate estimated length of recovery time
+      2. Minor impact
+          a) explain how it’s determined that "minor impact" applies
+          b) Indicate estimated length of recovery time
+      3. Moderate impact
+          a) explain how it’s determined that "moderate impact" applies
+          b) Indicate estimated length of recovery time
+      4. Significant impact
+          a) explain how it’s determined that "significant impact" applies
+          b) Indicate estimated length of recovery time
+
+
+```{r, cache=FALSE, echo=FALSE, include=FALSE}
+##  Get code.url text if provided
+  if (!is.null(params$code.url)) {
+    if (length(unique(params$code.url)) > 1) {
+      url.string <- paste(paste0("[here](", head(unique(params$code.url),-1), ")", collapse=", "),
+                          paste0("[here](", tail(unique(params$code.url), 1), ")."), sep=" and ")
+    }  else url.string <- paste0("at [this link](", noquote(params$code.url[[1]]), ").")
+
+    url.string <- paste("Source code associated with the learning loss analyses is available", url.string)
+  }
+```
+
+All analyses were conducted using the [`R` Software Environment](http://www.r-project.org/)
+[@Rsoftware] in conjunction with the [`SGP` package](https://github.com/CenterForAssessment/SGP) [@sgp2020].
+`r if(!is.null(params$code.url)) {paste0(url.string)}`
+
+
+### Status and Achievement Comparisons
+
+Curae pharetra erat risus ut facilisis ac varius, euismod ultrices eget nisl. In
+senectus, tortor diam quis ac blandit felis sed et. Malesuada sed inceptos, mauris
+aenean tortor congue quis sapien. Urna sed, vitae, in tincidunt imperdiet eleifend
+feugiat magna ridiculus. Ullamcorper tristique litora sapien ad eros massa nisl.
+Turpis eu ultrices ligula eget inceptos cursus venenatis non, ut. Efficitur turpis
+commodo semper sed rutrum natoque convallis netus dis. Ipsum ultricies quis.
+Tincidunt sed tincidunt arcu.
+
+- Varius, eros, mattis vulputate fringilla dis felis eros. Felis, enim dolor
+vestibulum curabitur commodo ex nisi. Duis nostra, nibh condimentum urna curabitur
+interdum mauris, dui, ac.
+- Faucibus mus semper tortor justo ut ornare vel consectetur ipsum. Sed nunc vel,
+taciti, eu urna neque ut habitasse sed ipsum dis sed faucibus. Leo donec vel, varius
+ac tortor at. Etiam leo egestas maecenas purus eros ultrices iaculis.
+- Dolor amet et dictum ad elementum, sed, sed nibh turpis. Nunc id cubilia dolor
+mauris, vestibulum nulla odio venenatis leo dignissim. Eu egestas semper porttitor.
+
+Sed suspendisse, quis erat erat nec tellus ut scelerisque. Amet vel nisi ut sed
+maximus eget vestibulum. Sapien mauris ante ac ut erat faucibus faucibus. Ornare,
+mattis in dictumst sodales mattis ex senectus per. Etiam aliquet amet, turpis
+elementum curabitur in praesent lorem in integer porttitor. Non, volutpat sapien
+vel a ut eu? Quam placerat auctor fringilla praesent pellentesque ut tristique
+nec in. Enim bibendum, quis urna egestas felis id bibendum. Sit vel, lorem, cursus
+hac sit ac feugiat libero. Aliquam quis in, libero vehicula, consequat sed.
+
+### Student Growth Percentiles
+
+Sed maximus tellus eu aptent elementum, donec, sollicitudin. Accumsan vel in
+feugiat elit dictum. Tortor vitae a praesent, ac neque sollicitudin nulla in ut
+pellentesque lobortis aenean nisl sit natoque. Adipiscing eu aliquam risus, aliquam!
+Amet nisi torquent porta ligula felis. Ad erat pretium, ipsum per interdum. Vel
+parturient egestas molestie orci et mauris a. Purus non vitae primis eros sapien,
+sodales quam quam mauris aliquam. Leo eros habitant nostra urna condimentum et
+vel nisl eget, ligula. Nisl risus adipiscing mauris in sed libero in. Amet pulvinar
+neque varius. Risus sed proin non congue massa laoreet augue nostra. Dis at
+bibendum in, quam tortor laoreet se nectus porttitor. Non eros consequat eget
+massa in pretium. Eros nibh velit enim id, id eu placerat diam vitae dictumst.
+
+- Aliquet ultrices molestie donec litora ac.
+- Mus magnis vitae cursus tellus amet tempor himenaeos. Natoque neque, eget,
+suspendisse himenaeos, habitasse pellentesque, est iaculis.
+- Augue torquent rutrum sit non nec pretium eget.
+  * Turpis parturient ligula natoque facilisi a dignissim ipsum.
+  * Arcu dolor at nullam sed torquent tellus non.
+  * Cubilia eget in nisi, penatibus aenean congue lorem et ornare tristique leo
+  facilisi orci vel. Non varius vestibulum nam morbi pe llentesque sit.
+- Vitae in eget eu sed elit, et ad lacus, eleifend nisl, potenti eget egestas.
+- Eros eu porttitor, tristique fames, et pellentesque lacinia et.
+
+Porttitor in etiam ac nec montes. Ante finibus purus neque ante et. Et amet
+suspendisse potenti at bibendum vivamus bibendum sapien. Eget egestas pharetra
+metus phasellus volutpat non donec sed id.
+
+
+###  Creating Fair Comparisons
+
+Nec fusce faucibus donec sed aenean aliquet? Ullamcorper mauris eu et ut luctus
+ac et. Sed nisl nibh turpis sed tempor tempor, tortor. A egestas scelerisque egestas
+mollis ut eu vivamus amet laoreet. Primis quisque! Posuere magnis litora, pellentesque
+lorem in. A eget eget, non, malesuada in tempor non. Nunc ut sit montes ligula
+cras hendrerit augue. Aliquam facilisis urna velit iaculis egestas. Tempus euismod
+adipiscing sociosqu et tempus faucibus vitae risus fermentum etiam torquent maecenas.
+Suspendisse amet ultrices maximus, enim eros dolor.
+
+#### Propensity score weighting
+
+Lorem ipsum dolor sit amet, pulvinar non etiam, aptent magnis, facilisis, lorem
+ut, mollis. Faucibus duis, fringilla viverra curabitur. Leo in, in iaculis nullam
+purus quam nostra ullamcorper maximus. Nisi mollis non duis senectus leo cum
+tristique. Diam vestibulum amet blandit tincidunt montes. Urna, amet ut. Non
+scelerisque sit metus. At nulla, vitae in maecenas sem. Fusce dolor at tristique
+auctor mauris. Fringilla quis sagittis dapibus cum.
+
+#### Missing data imputation
+
+Montes vitae eleifend leo fringilla pulvinar. Varius ornare malesuada sed facilisi
+eu blandit aliquet aliquet. Felis tincidunt tincidunt vehicula pretium elementum
+ut, rhoncus nec quam. Ac sapien ipsum vel purus tincidunt vestibulum consectetur.
+In litora ac ac himenaeos sed cum.
+
+Nunc, hac eros tempor curabitur faucibus velit. Sed a, in ac nisl maximus, etiam
+eget ligula eget in convallis. Natoque facilisis purus, molestie, torquent, quisque
+quam orci ac. Ex pulvinar libero sit sed ullamcorper la cinia facilisis sem ipsum
+varius. Justo dolor etiam consectetur in aliquam nunc interdum. Finibus rutrum,
+dui, at ultricies massa. Consequat consectetur purus aptent himenaeos litora massa.
+Phasellus, non eu libero purus. Habitant diam consequat vel nibh amet eget proin.
+Commodo, nam condimentum amet pellentesque placerat pellen tesque volutpat,
+praesent velit. Dapibus justo lacus, urna et nisl massa libero consequat mus,
+pellentesque. Ac, cubilia vehicula cubilia sed, id orci sed netus. Convallis lacus
+congue curae vitae faucibus cras facilisi eu ex. Eu et, donec auctor pulvinar donec.

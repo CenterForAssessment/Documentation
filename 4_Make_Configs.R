@@ -124,18 +124,47 @@ source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", 
 ##   The following script will merge the rmd.files (universal) and custom.files lists and return 'rmd.files' to be used in next steps
 # custom.files <- list(...) # override defaults if desired.  Otherwise a message that universal list will be used.
 
-# source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
+
+custom.files <- list(
+  report = list(
+    file.order = c(
+      "setup.Rmd",
+      "params.Rmd",
+      "0_Executive_Summary.Rmd", # implies 0_Executive_Summary_Text.Rmd
+      "1_Intro_Background.Rmd",
+      "1_Intro_Legislative_Charge.Rmd",
+      "1_Intro_Research_Questions.Rmd",
+      "1_Intro_Data_Sources.Rmd",
+      "1_Intro_Methods.Rmd"#,
+      # "2_Participate__Analysis.Rmd",
+      # "2_Participate__Overview.Rmd",
+      # "2_Participate_Counts.Rmd",
+      # "2_Participate_Mode_of_Instruction.Rmd",
+      # "2_Participate_Attendance.Rmd",
+      # "2_Participate_School_Closures.Rmd",
+      # "3_Impact__Overview.Rmd",
+      # "3_Impact_Achievement_Analysis.Rmd",
+      # "3_Impact_Achievement_Overview.Rmd",
+      # "3_Impact_Growth_Analysis.Rmd",
+      # "3_Impact_Growth_Overview.Rmd",
+      # "3_Impact_Synthesis.Rmd",
+      # "4_Discussion__Overview.Rmd",
+      # "9_Summary.Rmd"
+    )),
+  appendices = c())
+
+source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
 
 ##    Besides adding/reordering Rmd files though custom.files, one can request a
 ##    subset of files. This will result in a truncated report, allowing chapter/section
 ##    editing/development. You always need to include `setup.Rmd` and `params.Rmd`!
 
-custom.files <- list(
-  report = list(
-    file.order = c("setup.Rmd", "params.Rmd", "0_Executive_Summary.Rmd")),
-  appendices = c())
-
-source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
+# custom.files <- list(
+#   report = list(
+#     file.order = c("setup.Rmd", "params.Rmd", "0_Executive_Summary.Rmd")),
+#   appendices = c())
+#
+# source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
 
 
 #####

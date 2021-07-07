@@ -1,0 +1,98 @@
+```{r, cache=FALSE, echo=FALSE, include=FALSE}
+
+###   For CUSTOM EXEC SUMMARY:
+	##  Change unvrsl.rmd.path to custom.rmd.path
+
+###   Create any customized text variables that need to be inserted in the Exec Sum
+
+##    E.g. TXT__test.name.abv__TXT
+
+###   Test Name (Abbreviation)
+	if(length(params$test.name) > 1) {
+		test.name.abv <- paste(
+				paste0(head(params$test.name, -1),  " (", head(params$test.abv, -1), ")", collapse=", "),
+				paste0(tail(params$test.name, 1),  " (", tail(params$test.abv, 1), ")"), sep=" and ")
+		if (any(tmp.dups <- duplicated(params$GL_text_long))) {
+			dup.indx <- which(params$GL_text_long %in% params$GL_text_long[tmp.dups])
+			dup.txt <- unlist(params$GL_text_long[dup.indx[1]], use.names = F)
+			dup.test.abv <- paste(head(params$test.abv[dup.indx], -1), tail(params$test.abv[dup.indx], 1), sep=" and ")
+			tmp.tests <- c(dup.test.abv, unlist(params$test.abv[-dup.indx], use.names=F))
+			tmp.txt <- c(dup.txt, unlist(params$GL_text_long[-dup.indx], use.names=F))
+		} else {
+			tmp.tests <- params$test.abv
+			tmp.txt <- params$GL_text_long
+		}
+		if (all(tmp.dups)) {
+			test.subj <- paste0(tmp.txt, " from ", tmp.tests)
+		} else {
+			test.subj <- paste(
+					paste0(head(tmp.txt, -1),  " from ", head(tmp.tests, -1), collapse=", "),
+					paste0(tail(tmp.txt, 1),  " from ", tail(tmp.tests, 1)), sep=" and ")
+		}
+		# test.subj <- paste(
+		# 		paste0(head(params$GL_text_long, -1),  " (", head(params$test.abv, -1), ")", collapse=", "),
+		# 		paste0(tail(params$GL_text_long, 1),  " (", tail(params$test.abv, 1), ")"), sep=" and ")
+	} else {
+		test.name.abv <- paste0(params$test.name[[1]], " (", params$test.abv[[1]], ")")
+		test.subj <- paste0(params$test.name[[1]], " from ", params$test.abv[[1]])
+	}
+
+###   Executive Summary figures/stats that need to be calculated
+
+
+###   Executive Summary tables
+	###  Table 1. Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year
+
+	vi_tbl <- data.table::fread(text=
+	",State Overall, Public School Corporations, Public Charter Schools,Other Public Institutions
+	Used Virtual Instruction for COVID-Related Reasons,90.0%,90.7%,87.5%,100.0%
+	Used Virtual Instruction for Non-COVID-Related Reasons,7.5%,8.6%,4.8%,0.0%
+	Did Not Use Virtual Instruction,1.5%,0.7%,3.8%,0.0%
+	Established Virtual Charter School,1.0%,0.0%,3.8%,0.0%", header=TRUE, data.table = FALSE)
+
+	row.names(vi_tbl) <- NULL
+	vi_tbl <- as.matrix(vi_tbl)
+	colnames(vi_tbl) <- c("", "\nState Overall", "Public School\nCorporations",
+	                      "Public Charter\nSchools","Other Public\nInstitutions")
+
+  vi_tbl <- htmlTable::addHtmlTableStyle(vi_tbl,
+    align=paste0('r', paste(rep('c', ncol(vi_tbl)-1), collapse="")),
+    css.tspanner.sep = "border-top: 2px solid grey;") # css.table="min-width: 85%;",
+
+	###  Include VERY small, transparent image to create table title and
+	knitr::include_graphics("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", dpi=NA, error = FALSE)
+
+
+	tbl.txt <- htmlTable::htmlTable(vi_tbl, rnames=FALSE,
+		tfoot = "Source: 2020-2021 Annual Technology Plan Survey",
+		caption = "Table ExSum 1. Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year")
+	if (tolower(params$render.format) == "bookdown") tbl.txt <- c("\n\t", tbl.txt, "\n\t")
+
+##    Read in Executive Summary text - render format specific
+	if (tolower(params$render.format) == "bookdown") {
+		exec.sum.text <- readLines(file.path(params$custom.rmd.path[[1]], "0_Executive_Summary_Text.Rmd"))
+	} else {
+		exec.sum.text <- readLines("0_Executive_Summary_Text.Rmd")
+	}
+
+##    Replace parameter variables used in the text (e.g., PRM__draft.text__PRM)
+  param.to.replace <- unique(do.call(rbind, str_match_all(exec.sum.text, "PRM__\\s*(.*?)\\s*__PRM")))
+  for (i in seq(nrow(param.to.replace))) exec.sum.text <- gsub(param.to.replace[i,1], eval(parse(text=paste0("params[['", param.to.replace[i,2], "']][[1]]"))), exec.sum.text, fixed=TRUE)
+
+##    Replace text variables created above and used in the text (e.g., TXT__test.name.abv__TXT)
+  text.to.replace <- unique(do.call(rbind, str_match_all(exec.sum.text, "TXT__\\s*(.*?)\\s*__TXT")))
+  for (i in seq(nrow(text.to.replace))) exec.sum.text <- gsub(text.to.replace[i,1], eval(parse(text=text.to.replace[i,2])), exec.sum.text, fixed=TRUE)
+```
+
+```{r, results='asis', echo=FALSE}
+###  Needs to be a YAML chunk for bookdown and text in special <div> for pagedown
+	if (tolower(params$render.format) == "bookdown") {
+		cat(c("---", "abstract: |"), sep = "\n")
+		cat("\t", exec.sum.text, sep = "\n\t")
+		cat(c("", "---"), sep = "\n")
+	} else {
+		cat(c("","<div class='exec-summary'>", "", "# Executive Summary {-}"), sep = "\n")
+		cat(exec.sum.text, sep = "\n")
+		cat(c("", "</div>"), sep = "\n")
+	}
+```

@@ -1,0 +1,84 @@
+# Background
+
+At the end of January 2020, the World Health Organization declared the novel
+coronavirus (COVID-19) a public health emergency of international concern and the
+United States Secretary of Health and Human Services declared a public health
+emergency for the United States. The vast majority of Hoosiers throughout the
+State of Indiana continued to carry out their daily lives without interruption
+or interference from the global and national threat introduced by COVID-19 until
+March 6, 2020, when Governor Eric Holcomb declared a public health disaster
+emergency existed in Indiana that was attributable to COVID-19^[
+https://www.in.gov/gov/files/20-02ExecutiveOrderDeclarationofPublicHealthEmergencyforCOVID-19FINAL.pdf].
+Matters escalated as the number of positive COVID-19 cases rose exponentially
+over the following days and weeks.  
+
+On March 19, 2020, Governor Holcomb issued an executive order mandating that all
+public and private schools serving students in kindergarten through grade 12 must
+close and cease in-person instruction through May 1, 2020 in response to the rapid
+spread of COVID-19 in Indiana^[https://www.in.gov/gov/files/EO_20-05.pdf], and
+ultimately required schools to close their buildings and provide remote instruction
+to students for the remainder of the 2019-2020 school year^[https://www.in.gov/gov/files/Executive-Order-20-16-Education.pdf].
+
+The sudden onset of these changes during such unprecedented times brought about
+many obstacles for the "K12" environment. School leaders and educators were faced
+with immediate challenges as they quickly adapted operations to ensure students
+were provided with services upon which students and families relied and to deliver
+technology for continued access to educational services. Educators worked to revise
+their curriculum and syllabi to adjust for new virtual instruction methods that
+provided academic content and encouraged student engagement. To ensure the safety
+and wellbeing of students and school staff, Governor Holcomb cancelled the
+administration of all statewide assessments^[https://www.in.gov/gov/files/EO_20-05.pdf].
+Additionally, the Indiana Department of Education (IDOE) requested and received
+from the US Department of Education a waiver from the federal requirement to
+administer statewide assessments^[https://www.doe.in.gov/sites/default/files/essa/indiana-essa-waiver-request.pdf;
+https://www.doe.in.gov/sites/default/files/essa/used-essa-waiver-approval.pdf].
+
+On June 11, 2020, Governor Holcomb announced that public and private schools serving
+students in kindergarten through grade 12 were permitted to reopen on July 1, 2020
+to provide in-person instruction for students during the 2020-2021 school year^[
+https://www.in.gov/gov/files/Executive-Order-20-32-Stage-4.pdf]. With the reinstatement
+of in-person instruction came many operational considerations that schools had to
+confront for the first time. The IDOE, in collaboration with the Indiana State
+Department of Health and the Indiana Family and Social Services Administration,
+published "Indiana’s Considerations for Learning and Safe Schools"^[https://www.doe.in.gov/covid-19]
+(IN-CLASS) to provide guidance for schools when navigating new protocols for
+re-opening of school buildings and re-entry of students and staff. Ultimately,
+the IN-CLASS guidance signaled to schools that a return to in-person instruction
+did not equate to a return to "normal".
+
+The IN-CLASS guidance recommended that schools evaluate their local operations
+based on the school’s ability to maintain a safe and healthy school environment,
+and the prevalence of COVID-19 in their community at large. Given the uncertain
+nature and evolution of COVID-19, the vast majority of public school corporations
+and public charter schools opted to continue to use virtual instruction throughout
+the 2020-2021 school year for COVID-related reasons.
+
+```{r, virt-inst-table, fig.cap="Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year", out.width="0", out.height="0", out.extra=tab.out.ex, class = "figtab", results="asis"}
+	###  Table 1. Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year
+
+	vi_tbl <- data.table::fread(text=
+	",State Overall, Public School Corporations, Public Charter Schools,Other Public Institutions
+	Used Virtual Instruction for COVID-Related Reasons,90.0%,90.7%,87.5%,100.0%
+	Used Virtual Instruction for Non-COVID-Related Reasons,7.5%,8.6%,4.8%,0.0%
+	Did Not Use Virtual Instruction,1.5%,0.7%,3.8%,0.0%
+	Established Virtual Charter School,1.0%,0.0%,3.8%,0.0%", header=TRUE, data.table = FALSE)
+
+	row.names(vi_tbl) <- NULL
+	vi_tbl <- as.matrix(vi_tbl)
+	colnames(vi_tbl) <- c("", "\nState Overall", "Public School\nCorporations",
+	                      "Public Charter\nSchools","Other Public\nInstitutions")
+
+  vi_tbl <- htmlTable::addHtmlTableStyle(vi_tbl,
+    align=paste0('r', paste(rep('c', ncol(vi_tbl)-1), collapse="")),
+    css.tspanner.sep = "border-top: 2px solid grey;") # css.table="min-width: 85%;",
+
+	###  Include VERY small, transparent image to create table title and
+	knitr::include_graphics("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", dpi=NA, error = FALSE)
+
+  knitr::knit_print(
+		htmlTable::htmlTable(vi_tbl, rnames=FALSE, tfoot = "Source: 2020-2021 Annual Technology Plan Survey", # caption = "Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year")
+	    caption=tblCap(knitr::opts_current$get("fig.cap"))))
+```
+
+While virtual instruction was provided during the 2020-2021 school year, it was
+not the default mode of instruction for Indiana schools. (INSERT DATA ON MODE OF INSTRUCTION)
