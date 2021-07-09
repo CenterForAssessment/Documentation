@@ -4,6 +4,9 @@
 ###   Create/customize/complete the required YAML and RMD file config lists
 #####
 
+###   Set up your R working directory
+setwd("./Documentation")
+
 ###   Load required package(s)
 require(Literasee)
 
@@ -53,7 +56,7 @@ custom.config <- list(
       Interim_Assessment = c()
     ),
     years = list(
-      State_Assessment = as.character(2016:2019, 2021),
+      State_Assessment = as.character(c(2016:2019, 2021)),
       College_Entrance = c(),
       ELP_Assessment = as.character(2017:2021),
       Interim_Assessment = c("2021.1", "2021.2")
@@ -135,9 +138,9 @@ custom.files <- list(
       "1_Intro_Legislative_Charge.Rmd",
       "1_Intro_Research_Questions.Rmd",
       "1_Intro_Data_Sources.Rmd",
-      "1_Intro_Methods.Rmd"#,
-      # "2_Participate__Analysis.Rmd",
-      # "2_Participate__Overview.Rmd",
+      "1_Intro_Methods.Rmd",
+      "2_Participate__Overview.Rmd",
+      "2_Participate_Enrolled_Students.Rmd"#,
       # "2_Participate_Counts.Rmd",
       # "2_Participate_Mode_of_Instruction.Rmd",
       # "2_Participate_Attendance.Rmd",
@@ -151,7 +154,19 @@ custom.files <- list(
       # "4_Discussion__Overview.Rmd",
       # "9_Summary.Rmd"
     )),
-  appendices = c())
+    appendices = list(
+      A = list(
+        title = "Participation Supplimental Analyses",
+        file.order = c(
+          "setup_participation_appendix.Rmd",   #  Should be appendix specific (counter override, etc.)
+          "params.Rmd",  #  Could be appendix specific - params_appendix_a.Rmd
+          "Appendix_Participation_Intro.Rmd",
+          "Appendix_Participation_by_School.Rmd",
+          "Appendix_Participation_MinMax_Replace.Rmd"
+        ),
+        references = NULL
+      )
+    ))
 
 source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
 
@@ -175,3 +190,4 @@ createReportScripts(report_config=report.config, rmd_file_list=rmd.files)
 
 ###   Save report YAML and file configurations
 save(list=c("report.config", "rmd.files"), file = "Report_Configuration_MetaData.rda")
+setwd("..")

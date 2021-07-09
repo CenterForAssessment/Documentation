@@ -11,7 +11,7 @@ load("../Data/Report_Analyses.Rdata")
 
 ###   Load required packages
 require(Literasee)
-require(SGP)
+# require(SGP)
 
 
 #####
@@ -32,9 +32,14 @@ servr::daemon_stop()
 rmarkdown::render(file.path("report", "Indiana_Academic_Impact_Analysis.Rmd"))
 pagedown::chrome_print(file.path("report", "Indiana_Academic_Impact_Analysis.html"), wait=10, timeout=60)
 
-rmarkdown::render(file.path("report", "Goodness_of_Fit_Plots_APPENDIX_A.Rmd"))
+rmarkdown::render(file.path("report", "Participation_Supplimental_Analyses_APPENDIX_A.Rmd"))
 unlink(file.path("report", "_bookdown.yml")) #  Need to remove - seems to mess up subsequent attempts to re-render the `bookdown` site ...
-pagedown::chrome_print(file.path("report", "Goodness_of_Fit_Plots_APPENDIX_A.html"), wait=10, timeout=60) # , options = list(pageRanges='1-10') # last (blank) page issue fixed in dev pagedown varsion
+pagedown::chrome_print(file.path("report", "Participation_Supplimental_Analyses_APPENDIX_A.html"), wait=10, timeout=60) # , options = list(pageRanges='1-10') # last (blank) page issue fixed in dev pagedown varsion
+
+###  TBD
+# rmarkdown::render(file.path("report", "Goodness_of_Fit_Plots_APPENDIX_A.Rmd"))
+# unlink(file.path("report", "_bookdown.yml")) #  Need to remove - seems to mess up subsequent attempts to re-render the `bookdown` site ...
+# pagedown::chrome_print(file.path("report", "Goodness_of_Fit_Plots_APPENDIX_A.html"), wait=10, timeout=60) # , options = list(pageRanges='1-10') # last (blank) page issue fixed in dev pagedown varsion
 
 ###  Copy report to the bookdown site for download links
 if (!file.exists(file.path("site", "downloads"))) dir.create(file.path("site", "downloads"))

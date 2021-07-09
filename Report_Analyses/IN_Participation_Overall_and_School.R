@@ -44,8 +44,8 @@
                                             "VALID_CASE", "GRADE",
                                             "SCALE_SCORE", "ACHIEVEMENT_ProfandAbove",
                                             "ACHIEVEMENT_LEVEL")]
-  setnames(long_2019, names(long_2019)[4:8], paste0(names(long_2019)[4:8], "_19"))
-  long_2019[,YEAR := NULL]
+  setnames(long_2019, names(long_2019)[4:8], paste0("PRIOR_", names(long_2019)[4:8]))
+  long_2019[, YEAR := NULL]
 
   long_2021 <- long_prior[YEAR == "2021"]
   long_2021 <- merge(x=long_2021, y=long_2019, all.x=TRUE, all.y=FALSE,
@@ -53,7 +53,7 @@
 
   long_2021[, NOT_TESTED := ifelse(is.na(SCALE_SCORE), 1, 0)]
 
-  long_2019 <- Report_Data[[assessment]][VALID_CASE == "VALID_CASE" & YEAR=="2019",]
+  long_2019 <- Report_Data[[assessment]][YEAR=="2019",]
   long_prior <- rbindlist(list(long_2021, long_2019), fill=TRUE)
 
   ##C. Recode Subgroup info to make unique -------------------------------------
@@ -63,31 +63,30 @@
 
 #II. Particpation Exploration --------------------------------------------------
   #A. Examination based on Prior Scale Scores
-  level.tab <- table(long_2021[CONTENT_AREA == "ELA", ACHIEVEMENT_LEVEL_19, NOT_TESTED])
+  level.tab <- table(long_2021[CONTENT_AREA == "ELA", PRIOR_ACHIEVEMENT_LEVEL, NOT_TESTED])
   level.tab[1,] <- level.tab[1,]/sum(level.tab[1,])*100
   level.tab[2,] <- level.tab[2,]/sum(level.tab[2,])*100
 
 
   #B. Overall Table by Content  -- Table 1A.
   source(file.path(universal.content.path, "Learning_Loss_Analysis", "Functions", "func_fullTableState.R")) # only uses tmprms$demos$names
-  tab1.ela <- stateParticipationTable(long_data = long_prior,
-                                      subject   = "ELA",
-                                      params    = tmprms)
-  tab1.ela <- tab1.ela[-20,]
-  tab1.ela$ACHIEVEMENT_LEVEL_19[16] <- "No Prior Level"
-  p.table1.ela <- dcast(data=tab1.ela, GRADE + ACHIEVEMENT_LEVEL_19 ~ YEAR, value.var="PERCENT_TESTED") #+ SUBGROUP
-  names(p.table1.ela)[3:4] <- paste0("ELA.", names(p.table1.ela)[3:4])
 
-  tab1.math <- stateParticipationTable(long_data = long_prior,
-                                       subject   = "MATHEMATICS",
-                                       params    = tmprms)
-  tab1.math <- tab1.math[-20,]
-  tab1.math$ACHIEVEMENT_LEVEL_19[17] <- "No Prior Level"
-  p.table1.math <- dcast(data=tab1.math, GRADE + ACHIEVEMENT_LEVEL_19 ~ YEAR, value.var="PERCENT_TESTED") #+ SUBGROUP
-  names(p.table1.math)[3:4] <- paste0("Math.", names(p.table1.math)[3:4] )
+  overall_part <- data.frame(GRADE=NA, PRIOR_ACHIEVEMENT_LEVEL=NA)
+  full_count <- data.frame()
 
-  tab1 <- merge(x= p.table1.ela, y=p.table1.math, by=c("GRADE","ACHIEVEMENT_LEVEL_19"))
-  tab1 <- tab1[c(8,1:7,9:12),]
+  for (subj in tmprms$subjects) {
+    tmp.part <- stateParticipationTable(long_data = long_prior,
+                                        subject   = subj,
+                                        params    = tmprms)
+    tmp.part <- tmp.part[-(nrow(tmp.part)),]
+    tmp.part$PRIOR_ACHIEVEMENT_LEVEL[which(is.na(tmp.part$PRIOR_ACHIEVEMENT_LEVEL))] <- "No Prior Level"
+    p.table1 <- dcast(data=tmp.part, GRADE + PRIOR_ACHIEVEMENT_LEVEL ~ YEAR, value.var="PERCENT_TESTED") #+ SUBGROUP
+    names(p.table1)[3:4] <- paste0(subj, ".", names(p.table1)[3:4])
+
+    overall_part <- merge(x= overall_part, y=p.table1, all.y = TRUE, by=c("GRADE", "PRIOR_ACHIEVEMENT_LEVEL"))
+    tmp.part$CONTENT_AREA <- subj
+    full_count <- rbind.fill(full_count, tmp.part)
+  }
 
   ##  Assuming this for 'p'?
   # p <- Report_Analyses[["participation"]][[assessment]][["full_table"]]
@@ -243,6 +242,7 @@
     out_tab <- rbind(out_tab, temp_tab)
   }
 
-Report_Analyses[["participation"]][[assessment]][["overall_participation_rates"]] <- tab1 # 1A
-Report_Analyses[["participation"]][[assessment]][["school_minmax_diff_mean_pctp"]] <- comp_table #
+Report_Analyses[["participation"]][[assessment]][["overall_participation_rates"]] <- as.data.table(overall_part) # 1A
+Report_Analyses[["participation"]][[assessment]][["overall_participation_counts"]] <- as.data.table(full_count)
+Report_Analyses[["participation"]][[assessment]][["state_minmax_diff_mean_pctp"]] <- comp_table # already data.table
 Report_Analyses[["participation"]][[assessment]][["school_minmax_diff_quantiles"]] <- out_tab

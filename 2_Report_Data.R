@@ -48,6 +48,8 @@ Indiana_SGP_LONG_Data[, ACHIEVEMENT_ProfandAbove := mapvalues(ACHIEVEMENT_LEVEL,
                            to  =c("Proficient", "Proficient",
                                   "Not Proficient", "Not Proficient"))]
 
+Indiana_SGP_LONG_Data$ACHIEVEMENT_ProfandAbove[is.na(Indiana_SGP_LONG_Data$ACHIEVEMENT_LEVEL)] <- NA
+
 ###   For later use with WIDA_IN
 ###   Only works ~decent~ for grades 3:8... duh!
 # Indiana_Demographis <-
