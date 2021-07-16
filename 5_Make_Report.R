@@ -44,4 +44,7 @@ pagedown::chrome_print(file.path("report", "Participation_Supplimental_Analyses_
 ###  Copy report to the bookdown site for download links
 if (!file.exists(file.path("site", "downloads"))) dir.create(file.path("site", "downloads"))
 file.copy(file.path("report", "Indiana_Academic_Impact_Analysis.pdf"), file.path("site", "downloads"), overwrite = TRUE)
-file.copy(file.path("report", "Goodness_of_Fit_Plots_APPENDIX_A.pdf"), file.path("site", "downloads"), overwrite = TRUE)
+file.copy(file.path("report", "Participation_Supplimental_Analyses_APPENDIX_A.pdf"), file.path("site", "downloads"), overwrite = TRUE)
+# file.copy(file.path("report", "Goodness_of_Fit_Plots_APPENDIX_A.pdf"), file.path("site", "downloads"), overwrite = TRUE)
+
+setwd("..")

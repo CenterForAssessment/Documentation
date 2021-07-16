@@ -13,6 +13,8 @@
 ###   Set up your R working directory
 setwd("./Documentation")
 
+###   Locate the "Universal_Content" directory
+universal.content.path <- file.path("..", "..", "..", "Universal_Content")
 
 ###   Load packages used in the Report Analyses (and install/update as necessary)
 source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Packages.R"))
@@ -22,15 +24,16 @@ load("../Data/Report_Data.Rdata")
 
 ###   Either load an existing `Report_Analyses` object
 load("../Data/Report_Analyses.Rdata")
-    ##  or  ##
+  ##  or create a new one and run all analyses ##
     #  Report_Analyses <- list()
 
-###   Declare an assessment flavor (or loop around source(...) files)
-assessment <- "State_Assessment"
 
 #####
 ###   State_Assessment
 #####
+
+###   Declare an assessment flavor (or loop around source(...) files)
+assessment <- "State_Assessment"
 
 ###   Participation
 
@@ -47,6 +50,19 @@ source("Report_Analyses/IN_Temporary_Meta_Data.R")  #  source(file="CustomConten
 # run.onelevel_logistic <- TRUE
 # source("Report_Analyses/IN_Participation_FullTable_LogReg.R")   # `Warning ...: glm.fit: algorithm did not converge`
 source("Report_Analyses/IN_Participation_Overall_and_School.R") # `Warning ...: dcast generic in data.table ...  attempt to redirect to the relevant reshape2`
+
+###
+##   Quantile Shift Analyses
+###
+
+load("params_dry_run.rda")
+beeswarm.plots <- TRUE
+hsf.analysis <- TRUE
+between.inst.ges <- TRUE
+
+for (assessment in c("State_Assessment", "ELP_Assessment")) {
+    source("Report_Analyses/IN_Quantile_Shift_Effects_2021.R")
+}
 
 #####
 ###   College_Entrance

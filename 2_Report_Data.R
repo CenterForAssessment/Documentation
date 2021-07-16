@@ -14,6 +14,9 @@ require(SGP)
 require(data.table)
 require(plyr)
 
+###   Locate the "Universal_Content" directory (assume woring directory is ./Documentation)
+universal.content.path <- file.path("..", "..", "..", "Universal_Content")
+
 #####
 ###   State_Assessment
 #####
@@ -31,18 +34,75 @@ vars.to.keep <- c(
   "SCALE_SCORE_PRIOR_BASELINE", "SCALE_SCORE_PRIOR_STANDARDIZED_BASELINE",
   "SCALE_SCORE_ORIGINAL", "ACHIEVEMENT_LEVEL_ORIGINAL", "ACHIEVEMENT_LEVEL_PRIOR",
   "SGP", "SGP_BASELINE", "SGP_NORM_GROUP", "SGP_NORM_GROUP_BASELINE",
-  "DISTRICT_NUMBER", "DISTRICT_NAME", "SCHOOL_NUMBER", "SCHOOL_NAME", demographics)
+  "DISTRICT_NUMBER", "DISTRICT_NAME", "SCHOOL_NUMBER", "SCHOOL_NAME",
+  demographics, "MODE_OF_INSTRUCTION")
 
 Indiana_SGP_LONG_Data <- Indiana_SGP_LONG_Data[GRADE %in% 3:8, ..vars.to.keep]
 
-###   From Nathan's
+###   Re-factor ACHIEVEMENT_LEVEL_PRIOR to get values for kids with missing scores
+Indiana_SGP_LONG_Data[is.na(SCALE_SCORE), VALID_CASE := "VALID_CASE"]
 
-Indiana_SGP_LONG_Data[, FREE_REDUCED_LUNCH_STATUS := mapvalues(SOCIO_ECONOMIC_STATUS,
+setkey(Indiana_SGP_LONG_Data, VALID_CASE, CONTENT_AREA, YEAR, GRADE, ID, SCALE_SCORE)
+setkey(Indiana_SGP_LONG_Data, VALID_CASE, CONTENT_AREA, YEAR, GRADE, ID)
+Indiana_SGP_LONG_Data[which(duplicated(Indiana_SGP_LONG_Data, by=key(Indiana_SGP_LONG_Data)))-1, VALID_CASE:="INVALID_CASE"]
+
+setkey(Indiana_SGP_LONG_Data, VALID_CASE, CONTENT_AREA, YEAR, ID, GRADE)
+setkey(Indiana_SGP_LONG_Data, VALID_CASE, CONTENT_AREA, YEAR, ID)
+Indiana_SGP_LONG_Data[which(duplicated(Indiana_SGP_LONG_Data, by=key(Indiana_SGP_LONG_Data)))-1, VALID_CASE:="INVALID_CASE"]
+
+Indiana_SGP_LONG_Data <- Indiana_SGP_LONG_Data[VALID_CASE == "VALID_CASE"]
+
+###   Create Lagged Achievement (ORIGINAL and EQUATED) variables that include missing scores (and others potentially)
+shift.key <- c("ID", "CONTENT_AREA", "YEAR", "GRADE", "VALID_CASE")
+setkeyv(Indiana_SGP_LONG_Data, shift.key)
+
+Indiana_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_ORIGINAL_PRIOR := shift(ACHIEVEMENT_LEVEL_ORIGINAL, 1), by = list(ID, CONTENT_AREA)]
+Indiana_SGP_LONG_Data[is.na(ACHIEVEMENT_LEVEL_ORIGINAL_PRIOR), ACHIEVEMENT_LEVEL_ORIGINAL_PRIOR := ACHIEVEMENT_LEVEL_PRIOR] # Mainly fill in 2016
+# table(Indiana_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR, ACHIEVEMENT_LEVEL_ORIGINAL_PRIOR], exclude=NULL)
+
+# Indiana_SGP_LONG_Data[, ACH_LEV_P2 := as.character(NA)] # for testing - create a alternate version first and check equality for non-NA values
+Indiana_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR := shift(ACHIEVEMENT_LEVEL, 1), by = list(ID, CONTENT_AREA)]
+# table(Indiana_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR, ACH_LEV_P2], exclude=NULL) # for testing - create a alternate version first and check equality for non-NA values
+
+###   Create Lagged Scale Score (EQUATED) variables that include missing scores (and others potentially)
+Indiana_SGP_LONG_Data[, c("SCALE_SCORE_PRIOR_1YEAR", "SCALE_SCORE_PRIOR_2YEAR") := shift(SCALE_SCORE, 1:2), by = list(ID, CONTENT_AREA)]
+##    Fix 2021 Lags since no 2020 data:
+Indiana_SGP_LONG_Data[YEAR == '2021', SCALE_SCORE_PRIOR_2YEAR := SCALE_SCORE_PRIOR_1YEAR]
+Indiana_SGP_LONG_Data[YEAR == '2021', SCALE_SCORE_PRIOR_1YEAR := NA]
+# table(Indiana_SGP_LONG_Data[, YEAR, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL)
+# table(Indiana_SGP_LONG_Data[, GRADE, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL) # Remove 2YEAR priors for Grades 3 & 4 - repeaters
+Indiana_SGP_LONG_Data[GRADE %in% c(3, 4), SCALE_SCORE_PRIOR_2YEAR := NA]
+Indiana_SGP_LONG_Data[GRADE == 3, SCALE_SCORE_PRIOR_1YEAR := NA]
+# table(Indiana_SGP_LONG_Data[YEAR=='2019', is.na(SCALE_SCORE_PRIOR_BASELINE), is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL)
+# cor(Indiana_SGP_LONG_Data[, SCALE_SCORE_PRIOR_BASELINE, SCALE_SCORE_PRIOR_2YEAR], use='complete.obs') # Not perfect.  Use BASELINE data when available:
+Indiana_SGP_LONG_Data[!is.na(SCALE_SCORE_PRIOR_BASELINE), SCALE_SCORE_PRIOR_2YEAR := SCALE_SCORE_PRIOR_BASELINE]
+
+###   Create Prior Score Deciles
+source(file.path(universal.content.path, "Learning_Loss_Analysis", "Functions", "Quantile_Cut_Functions.R"))
+
+##    Establish a decile lookup based on 2019 for each CONTENT_AREA/GRADE combination
+Indiana_SGP_LONG_Data[, SCALE_SCORE_PRIOR_2YEAR := round(SCALE_SCORE_PRIOR_2YEAR, 0)] # 2016 - 2018 EQUATED scores are not rounded!  Makes for ugly individual_sf tables...
+Decile_Lookup <- Indiana_SGP_LONG_Data[YEAR == "2019" & !is.na(SCALE_SCORE_PRIOR_2YEAR),
+                            as.list(getQuantcut(SCALE_SCORE_PRIOR_2YEAR)), keyby = c("CONTENT_AREA", "GRADE")]
+prior.decile.fcase <- getFCASE("SCALE_SCORE_PRIOR_2YEAR", Decile_Lookup)
+Indiana_SGP_LONG_Data[, PRIOR_DECILE_2YEAR := eval(parse(text=prior.decile.fcase))]
+Indiana_SGP_LONG_Data[, PRIOR_DECILE_2YEAR := factor(PRIOR_DECILE_2YEAR, levels = paste0("Q", 1:10), labels=paste0("Decile_", 1:10))]
+
+##    Some sanity checks
+# table(Indiana_SGP_LONG_Data[, PRIOR_DECILE_2YEAR, GRADE], exclude=NULL)
+# table(Indiana_SGP_LONG_Data[, PRIOR_DECILE_2YEAR, YEAR], exclude=NULL)
+# table(Indiana_SGP_LONG_Data[, !is.na(SCALE_SCORE_PRIOR_2YEAR), PRIOR_DECILE_2YEAR,], exclude=NULL) # Should be 0 in the TRUE/<NA> cell
+# Indiana_SGP_LONG_Data[!is.na(PRIOR_DECILE_2YEAR) & CONTENT_AREA=='MATHEMATICS' & GRADE=='5',
+#             as.list(summary(SCALE_SCORE_PRIOR_2YEAR)), keyby = "PRIOR_DECILE_2YEAR"]
+# Decile_Lookup[CONTENT_AREA=='MATHEMATICS' & GRADE=='5']
+
+###   From Nathan's
+Indiana_SGP_LONG_Data[, FREE_REDUCED_LUNCH_STATUS := plyr::mapvalues(SOCIO_ECONOMIC_STATUS,
                            from=c("Paid meals", "Free meals", "Reduced price meals", "Unknown"),
                            to  =c("Free Reduced Lunch: No", "Free Reduced Lunch: Yes",
                                   "Free Reduced Lunch: Yes", "Unkown"))]
 
-Indiana_SGP_LONG_Data[, ACHIEVEMENT_ProfandAbove := mapvalues(ACHIEVEMENT_LEVEL,
+Indiana_SGP_LONG_Data[, ACHIEVEMENT_ProfandAbove := plyr::mapvalues(ACHIEVEMENT_LEVEL,
                            from=c("Above Proficiency", "At Proficiency",
                                   "Approaching Proficiency", "Below Proficiency"),
                            to  =c("Proficient", "Proficient",
@@ -52,9 +112,10 @@ Indiana_SGP_LONG_Data$ACHIEVEMENT_ProfandAbove[is.na(Indiana_SGP_LONG_Data$ACHIE
 
 ###   For later use with WIDA_IN
 ###   Only works ~decent~ for grades 3:8... duh!
-# Indiana_Demographis <-
+# Indiana_Demographics <-
 #     unique(Indiana_SGP_LONG_Data[VALID_CASE == "VALID_CASE" & YEAR %in% c("2019", "2021"),
 #                                   c("ID", "YEAR", ..demographics, "FREE_REDUCED_LUNCH_STATUS")])
+
 
 #####
 ###   College_Entrance
@@ -98,15 +159,75 @@ WIDA_IN_SGP_LONG_Data[is.na(DISTRICT_NUMBER), DISTRICT_NUMBER := i.DISTRICT_NUMB
 WIDA_IN_SGP_LONG_Data[, i.SCHOOL_NUMBER := NULL]
 WIDA_IN_SGP_LONG_Data[, i.DISTRICT_NUMBER := NULL]
 
+##    Remove leading IN* and leading/padding 0s from 2021 District Numbers
+# sort(unique(grep("IN", WIDA_IN_SGP_LONG_Data[, DISTRICT_NUMBER], value = T)))
+WIDA_IN_SGP_LONG_Data[, DISTRICT_NUMBER := gsub("IN00|INB00", "", DISTRICT_NUMBER)]
+WIDA_IN_SGP_LONG_Data[, DISTRICT_NUMBER := gsub("IN0|INA0|INB0|INC0|IND0", "", DISTRICT_NUMBER)]
+WIDA_IN_SGP_LONG_Data[, DISTRICT_NUMBER := gsub("INA|INB|INC|IND", "", DISTRICT_NUMBER)]
+WIDA_IN_SGP_LONG_Data[, DISTRICT_NUMBER := gsub("IN", "", DISTRICT_NUMBER)]
+
+###   Re-factor ACHIEVEMENT_LEVEL_PRIOR to get values for kids with missing scores
+WIDA_IN_SGP_LONG_Data[is.na(SCALE_SCORE), VALID_CASE := "VALID_CASE"]
+
+#   Resolve duplicates
+setkey(WIDA_IN_SGP_LONG_Data, VALID_CASE, CONTENT_AREA, YEAR, ID, GRADE, SCALE_SCORE)
+setkey(WIDA_IN_SGP_LONG_Data, VALID_CASE, CONTENT_AREA, YEAR, ID, GRADE)
+WIDA_IN_SGP_LONG_Data[which(duplicated(WIDA_IN_SGP_LONG_Data, by=key(WIDA_IN_SGP_LONG_Data)))-1, VALID_CASE:="INVALID_CASE"]
+
+WIDA_IN_SGP_LONG_Data <- WIDA_IN_SGP_LONG_Data[VALID_CASE=="VALID_CASE"]
+
+###   Create Lagged Achievement variables that include missing scores (and others potentially)
+shift.key <- c("ID", "CONTENT_AREA", "YEAR", "GRADE", "VALID_CASE")
+setkeyv(WIDA_IN_SGP_LONG_Data, shift.key)
+
+# WIDA_IN_SGP_LONG_Data[, ACH_LEV_P2 := as.character(NA)] # for testing - create a alternate version first and check equality for non-NA values
+WIDA_IN_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR := shift(ACHIEVEMENT_LEVEL, 1), by = list(ID, CONTENT_AREA)]
+# table(WIDA_IN_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR, ACH_LEV_P2], exclude=NULL)
+
+###   Create Lagged Scale Score variables that include missing scores (and others potentially)
+WIDA_IN_SGP_LONG_Data[, c("SCALE_SCORE_PRIOR_1YEAR", "SCALE_SCORE_PRIOR_2YEAR") := shift(SCALE_SCORE, 1:2), by = list(ID, CONTENT_AREA)]
+# table(WIDA_IN_SGP_LONG_Data[, YEAR, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL)
+# table(WIDA_IN_SGP_LONG_Data[, GRADE, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL) # Remove 2YEAR priors for Grades 0 & 1 - repeaters
+WIDA_IN_SGP_LONG_Data[GRADE %in% c(0, 1), SCALE_SCORE_PRIOR_2YEAR := NA]
+WIDA_IN_SGP_LONG_Data[GRADE == 0, SCALE_SCORE_PRIOR_1YEAR := NA]
+# table(WIDA_IN_SGP_LONG_Data[YEAR=="2021", is.na(SCALE_SCORE_PRIOR), is.na(SCALE_SCORE_PRIOR_1YEAR)], exclude=NULL) # No SCALE_SCORE_PRIOR_BASELINE in WIDA
+# cor(WIDA_IN_SGP_LONG_Data[, SCALE_SCORE_PRIOR, SCALE_SCORE_PRIOR_1YEAR], use="complete.obs") # Perfect.
+
+###   Create Prior Score Deciles
+##    Establish a decile lookup based on 2019 & 2020 for each GRADE
+Decile_Lookup_1yr <- WIDA_IN_SGP_LONG_Data[YEAR == "2020" & !is.na(SCALE_SCORE_PRIOR_1YEAR),
+                            as.list(getQuantcut(SCALE_SCORE_PRIOR_1YEAR)), keyby = c("CONTENT_AREA", "GRADE")]
+prior1yr.decile.fcase <- getFCASE("SCALE_SCORE_PRIOR_1YEAR", Decile_Lookup_1yr)
+WIDA_IN_SGP_LONG_Data[, PRIOR_DECILE_1YEAR := eval(parse(text=prior1yr.decile.fcase))]
+WIDA_IN_SGP_LONG_Data[, PRIOR_DECILE_1YEAR := factor(PRIOR_DECILE_1YEAR, levels = paste0("Q", 1:10), labels=paste0("Decile_", 1:10))]
+
+Decile_Lookup_2yr <- WIDA_IN_SGP_LONG_Data[YEAR == "2019" & !is.na(SCALE_SCORE_PRIOR_2YEAR),
+                            as.list(getQuantcut(SCALE_SCORE_PRIOR_2YEAR)), keyby = c("CONTENT_AREA", "GRADE")]
+prior2yr.decile.fcase <- getFCASE("SCALE_SCORE_PRIOR_2YEAR", Decile_Lookup_2yr)
+WIDA_IN_SGP_LONG_Data[, PRIOR_DECILE_2YEAR := eval(parse(text=prior2yr.decile.fcase))]
+WIDA_IN_SGP_LONG_Data[, PRIOR_DECILE_2YEAR := factor(PRIOR_DECILE_2YEAR, levels = paste0("Q", 1:10), labels=paste0("Decile_", 1:10))]
+
+##    Some sanity checks
+# table(WIDA_IN_SGP_LONG_Data[, PRIOR_DECILE_1YEAR, GRADE], exclude=NULL)
+# table(WIDA_IN_SGP_LONG_Data[, PRIOR_DECILE_2YEAR, GRADE], exclude=NULL)
+# table(WIDA_IN_SGP_LONG_Data[, PRIOR_DECILE_1YEAR, YEAR], exclude=NULL)
+# table(WIDA_IN_SGP_LONG_Data[, PRIOR_DECILE_2YEAR, YEAR], exclude=NULL)
+# table(WIDA_IN_SGP_LONG_Data[, !is.na(SCALE_SCORE_PRIOR_1YEAR), PRIOR_DECILE_1YEAR,], exclude=NULL) # Should be 0 in the TRUE/<NA> cell
+# WIDA_IN_SGP_LONG_Data[!is.na(PRIOR_DECILE_1YEAR) & GRADE=='5',
+#             as.list(summary(SCALE_SCORE_PRIOR_1YEAR)), keyby = "PRIOR_DECILE_1YEAR"]
+# Decile_Lookup_1yr[GRADE=='5']
+
+
 ###   Merge in demographics as available from ILEARN
 ###   Only works ~decent~ for grades 3:8... duh!
-# setkey(Indiana_Demographis, ID, YEAR)
+# setkey(Indiana_Demographics, ID, YEAR)
 # setkey(WIDA_IN_SGP_LONG_Data, ID, YEAR)
-# WIDA_IN_SGP_LONG_Data <- Indiana_Demographis[WIDA_IN_SGP_LONG_Data]
+# WIDA_IN_SGP_LONG_Data <- Indiana_Demographics[WIDA_IN_SGP_LONG_Data]
 #
 # setkey(WIDA_IN_SGP_LONG_Data, ID, YEAR)
 # WIDA_IN_SGP_LONG_Data <- data.table(dplyr::ungroup(tidyr::fill(dplyr::group_by(WIDA_IN_SGP_LONG_Data, ID),
 #                           tidyselect::all_of(demographics), .direction="downup")))
+
 
 #####
 ###   Interim_Assessment

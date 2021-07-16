@@ -29,7 +29,15 @@ for schools when navigating new protocols for re-opening and re-entry of school
 buildings. Ultimately, the IN-CLASS guidance signaled to schools that a return to
 in-person instruction did not equate to a return to "normal".
 
-TXT__tbl.txt__TXT 
+
+<!--  
+  If you wanted a table in the the text you'd add this here:
+  Doesn't seem to work in 'bookdown'...
+
+TXT__tbl.txt__TXT
+
+-->
+
 
 PRM__state.name__PRM, like all states, is currently grappling with evaluating the
 academic impact the pandemic has had, as well as how to make efficient, targeted
@@ -87,4 +95,4 @@ This paper examines the following questions in detail:
 
 ##  Preliminary Findings
 
-Spoiler alert! Turd is IN the punchbowl...
+TBD

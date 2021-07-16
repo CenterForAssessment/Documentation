@@ -41,32 +41,34 @@
 
 
 ###   Executive Summary tables
+
+	###  NOT INCLUDED NOW - But this is how you could do it...
 	###  Table 1. Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year
 
-	vi_tbl <- data.table::fread(text=
-	",State Overall, Public School Corporations, Public Charter Schools,Other Public Institutions
-	Used Virtual Instruction for COVID-Related Reasons,90.0%,90.7%,87.5%,100.0%
-	Used Virtual Instruction for Non-COVID-Related Reasons,7.5%,8.6%,4.8%,0.0%
-	Did Not Use Virtual Instruction,1.5%,0.7%,3.8%,0.0%
-	Established Virtual Charter School,1.0%,0.0%,3.8%,0.0%", header=TRUE, data.table = FALSE)
+	# vi_tbl <- data.table::fread(text=
+	# ",State Overall, Public School Corporations, Public Charter Schools,Other Public Institutions
+	# Used Virtual Instruction for COVID-Related Reasons,90.0%,90.7%,87.5%,100.0%
+	# Used Virtual Instruction for Non-COVID-Related Reasons,7.5%,8.6%,4.8%,0.0%
+	# Did Not Use Virtual Instruction,1.5%,0.7%,3.8%,0.0%
+	# Established Virtual Charter School,1.0%,0.0%,3.8%,0.0%", header=TRUE, data.table = FALSE)
+	#
+	# row.names(vi_tbl) <- NULL
+	# vi_tbl <- as.matrix(vi_tbl)
+	# colnames(vi_tbl) <- c("", "\nState Overall", "Public School\nCorporations",
+	#                       "Public Charter\nSchools","Other Public\nInstitutions")
+	#
+  # vi_tbl <- htmlTable::addHtmlTableStyle(vi_tbl,
+  #   align=paste0('r', paste(rep('c', ncol(vi_tbl)-1), collapse="")),
+  #   css.tspanner.sep = "border-top: 2px solid grey;") # css.table="min-width: 85%;",
+	#
+	# ###  Include VERY small, transparent image to create table title and
+	# knitr::include_graphics("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", dpi=NA, error = FALSE)
 
-	row.names(vi_tbl) <- NULL
-	vi_tbl <- as.matrix(vi_tbl)
-	colnames(vi_tbl) <- c("", "\nState Overall", "Public School\nCorporations",
-	                      "Public Charter\nSchools","Other Public\nInstitutions")
-
-  vi_tbl <- htmlTable::addHtmlTableStyle(vi_tbl,
-    align=paste0('r', paste(rep('c', ncol(vi_tbl)-1), collapse="")),
-    css.tspanner.sep = "border-top: 2px solid grey;") # css.table="min-width: 85%;",
-
-	###  Include VERY small, transparent image to create table title and
-	knitr::include_graphics("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", dpi=NA, error = FALSE)
-
-
-	tbl.txt <- htmlTable::htmlTable(vi_tbl, rnames=FALSE,
-		tfoot = "Source: 2020-2021 Annual Technology Plan Survey",
-		caption = "Table ExSum 1. Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year")
-	if (tolower(params$render.format) == "bookdown") tbl.txt <- c("\n\t", tbl.txt, "\n\t")
+	tbl.txt <- ""
+	# tbl.txt <- htmlTable::htmlTable(vi_tbl, rnames=FALSE,
+	# 	tfoot = "Source: 2020-2021 Annual Technology Plan Survey",
+	# 	caption = "Table ExSum 1. Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year")
+	# if (tolower(params$render.format) == "bookdown") tbl.txt <- c("\n\t", tbl.txt, "\n\t")
 
 ##    Read in Executive Summary text - render format specific
 	if (tolower(params$render.format) == "bookdown") {
