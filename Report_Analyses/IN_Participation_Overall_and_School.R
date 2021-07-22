@@ -22,6 +22,7 @@
   ###   Locate the "Universal_Content" directory (assume woring directory is ./Documentation)
   universal.content.path <- file.path("..", "..", "..", "Universal_Content")
 
+  ###   Declare an assessment flavor --  need to extend to WIDA
   if (!exists("assessment")) assessment <- "State_Assessment"
 
   ##    Read in Nathan's configs from `parmas` development

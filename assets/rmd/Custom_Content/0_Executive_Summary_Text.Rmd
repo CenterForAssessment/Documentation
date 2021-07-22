@@ -12,7 +12,7 @@ all public and private schools close and cease in-person instruction
 [remainder of the 2019-2020 school year](https://www.in.gov/gov/files/Executive-Order-20-16-Education.pdf).
 
 The sudden onset of these changes presented school leaders and educators with
-immediate challenges and they quickly adapted operations to provide the services
+immediate challenges, and they quickly adapted operations to provide the services
 upon which students and families relied and to deliver continued access to education.
 Governor Holcomb [cancelled the administration of all statewide assessments](https://www.in.gov/gov/files/EO_20-05.pdf)
 and the Indiana Department of Education (IDOE) [requested and received a waiver](
@@ -27,7 +27,7 @@ with other agencies, the IDOE published "Indiana’s Considerations for Learning
 Safe Schools" [(IN-CLASS)](https://www.doe.in.gov/covid-19) to provide guidance
 for schools when navigating new protocols for re-opening and re-entry of school
 buildings. Ultimately, the IN-CLASS guidance signaled to schools that a return to
-in-person instruction did not equate to a return to "normal".
+in-person instruction did not equate to a return to "normal."
 
 
 <!--  
@@ -39,60 +39,187 @@ TXT__tbl.txt__TXT
 -->
 
 
-PRM__state.name__PRM, like all states, is currently grappling with evaluating the
-academic impact the pandemic has had, as well as how to make efficient, targeted
-use of resources to resources to ameliorate learning loss. This report summarizes
-achievement (status) and growth analyses [@sgp2020] pursued towards those ends. Historical
-TXT__test.name.abv__TXT data was used to establish "fair" achievement comparisons
-and to derive baseline student growth percentiles (i.e., describing 2021 growth
-relative to 2019 norms). Data in TXT__test.subj__TXT was used in these investigations.
+Indiana, like all states, is currently grappling with the challenge of evaluating
+the academic impact that the pandemic has had, as well as how to make efficient,
+targeted use of resources to ameliorate learning losses. After more than a year
+of uncertainty and disruption that has been introduced into Indiana’s educational
+systems due to the COVID-19 Pandemic, we can begin to effectively assess the impact
+on student learning and achievement using statewide achievement data. Educators,
+parents, and leaders need good information to help them understand and support
+efforts to promote student achievement. Indeed, in the best of circumstances the
+key outcomes and implications of student achievement data are sometimes difficult
+to identify, and we are far from the best of circumstances.  
 
-###  Research Questions
+Understanding impact is clearly a daunting but vital task. What is meant by the
+term impact, and on who, what, and when? To be sure, there cannot be a one-size-fits-all
+approach to understanding the impact of the COVID-19 pandemic on student learning,
+and no single study can characterize it comprehensively. Nevertheless, the Indiana
+Department of Education has collected high quality assessment data that can be
+used to support its efforts to understand student learning and achievement during
+the pandemic to inform state and local response and recovery of learning.
 
-This paper examines the following questions in detail:
+##  Study Goals
 
-  A) To what extent did the disruptions in educational programming due to COVID-19
-     impact student academic performance and learning outcomes?
-      1. Who are the students considered in this research? (sample/comparison group)
-      2. What was the experienced learning loss in English/language arts and mathematics
-         for the student populations and communities in Indiana?
-          - impact based on pre-covid school year to 20/21 school year
-              *Formative (fall to fall; winter to winter; spring to spring)
-              *Summative (2019 - 2021)
-          - changes within 20/21 school year (fall to winter; winter to spring)
-      3. What disparities in impact exist between student populations and communities in Indiana?
-          a) Racial/ethnic subgroups
-          b) Special education status
-          c) English learner status
-          d) Poverty status
-          e) Type of community (urban, suburban, rural, etc)
-          f) Mode of instruction
-          g) School type? (Tpub, Cpub, Nonpub/choice)
-  B) What is the anticipated recovery time associated with the academic impact
-     experienced due to the disruptions in educational programming due to COVID-19?
+The purpose of this study is to provide Indiana stakeholders with insights into
+how student learning and achievement was impacted by the pandemic. It focuses on
+quantifying change in student test participation, and academic achievement in terms
+of both status and growth. This report, therefore, summarizes achievement status
+and growth analyses (Betebenner et al. 2020) pursued towards those ends. Historical
+Indiana Learning Evaluation and Readiness Network (ILEARN), WIDA ACCESS (WIDA)
+and NWEA Measures of Academic Progress (MAP Growth) data was used to establish
+"fair" achievement comparisons and to derive baseline student growth percentiles
+(i.e., describing 2021 growth relative to 2019 norms). Data in English language
+arts (ELA) and mathematics from ILEARN and MAP Growth and Overall English language
+proficiency (ELP) from WIDA was used in these investigations.
 
-###  Methods
+Given the higher than usual variability of learning conditions in Indiana due to
+the pandemic, this study focuses attention on both participation and
+achievement/performance for,  
 
-  A) Indicate consultation w/ TAC
-  B) How do we define "learning loss"?
-  C) Methods used to identify/determine learning loss
-      1. Status: status changes in proficiency
-      2. Growth: Use of baseline growth norms to provide context/comparison to determine loss
-      3. Note: provide explanation of how "apples to apples" comparison achieved to confirm reliability of findings
-  D) Established "impact" statuses and definitions
-      1. No impact
-          a) explain how it’s determined that "no impact" applies
-          b) Indicate estimated length of recovery time
-      2. Minor impact
-          a) explain how it’s determined that "minor impact" applies
-          b) Indicate estimated length of recovery time
-      3. Moderate impact
-          a) explain how it’s determined that "moderate impact" applies
-          b) Indicate estimated length of recovery time
-      4. Significant impact
-          a) explain how it’s determined that "significant impact" applies
-          b) Indicate estimated length of recovery time
+*	students, schools, and districts, by grade level
+*	student groups, including race/ethnicity, economically disadvantaged, students
+with disabilities, & English language learner, by grade level
 
-##  Preliminary Findings
 
-TBD
+##  Research Questions
+
+This study addresses specific research questions in two main categories of impact:
+changes in 1) participation and 2) performance as measured by both status and
+growth metrics.
+
+###  Participation Changes
+
+Complete descriptions of changes in student enrollment and test participation in
+2021 is foundationally important for accurately interpreting student performance
+in terms of status, trend, and growth. Therefore, this study proposes an approach
+to quantifying enrollment and test participation changes that responds to the
+following questions:
+
+*	Were the changes in enrollment by grade and subject from 2019 to 2021 larger
+  than enrollment changes in prior 2-year increments?
+  - How do these changes vary over students, student groups, schools, and districts?
+  - Are larger changes associated with identifiable student groups, schools, or districts?
+* Were the changes in test participation by grade and subject from 2019 to 2021
+  larger than enrollment changes in prior 2-year increments?
+  - How do these changes vary over students, student groups, schools, and districts?
+  - Are larger changes associated with identifiable student groups, schools, or districts?
+
+
+###  Performance Changes
+The study of performance changes based on 2021 testing results will support an
+understanding of the pandemic’s near-term impact on student achievement. The term
+"impact" is often referenced broadly in educational settings and can, therefore,
+be unclear and diffused over many subjects, levels, types, and timelines, making
+it difficult to isolate the most important investigative or research questions to
+pursue. In the case of measuring the impact of the pandemic, the universal nature
+of the expected impact makes it impossible to compare students who have and have
+not been impacted. Therefore, the only link between the pandemic (as the cause)
+that impacts achievement (as the effect) is that it is an event that occurred
+between 2019 and 2021. There could be many other intervening variables for which
+simple comparisons have not accounted. Also, as addressed by evaluation of changes
+in enrollment and participation, data completeness and the surrounding testing
+and student conditions will also be important factors to consider in the
+interpretation of changes in status, and growth at individual and aggregate levels.
+
+Therefore, student performance that is not influenced by pandemic-related conditions
+will need to be approximated using historical data, and the models used to evaluate
+impact will need to account for missing data. We identify the following questions
+as a means to guide our investigation of the pandemic’s impact on student achievement
+in Indiana in a way that provides a clear and coherent characterization of changes
+in performance status and growth:  
+
+* To what extent did the disruptions in educational programming due to COVID-19
+  impact student participation in achievement testing?
+* To what extent did the disruptions in educational programming due to COVID-19
+  impact student academic performance and learning outcomes?
+  - What are the observed changes in student performance (based on achievement
+    test scores and performance classifications) by grade and subject from 2019 to 2021)?
+    * How do these changes vary over students, student groups, schools, and districts?
+    * Are larger changes associated with identifiable student groups, schools, or districts?
+      - Racial/ethnic subgroups
+      - Special education status
+      - English learner status
+      - Poverty status
+      - Type of community (urban, suburban, rural, etc)
+      - Mode of instruction
+      - School type? (Tpub, Cpub, Nonpub/choice)
+  - What are the observed changes in student growth by grade and subject from 2019 to 2021?
+    * How do these changes vary over students, student groups, schools, and districts?
+    * Are larger changes associated with identifiable student groups, schools, or districts?
+      - Racial/ethnic subgroups
+      - Special education status
+      - English learner status
+      - Poverty status
+      - Type of community (urban, suburban, rural, etc)
+      - Mode of instruction
+      - School type? (Tpub, Cpub, Nonpub/choice)
+* What is the projected time for recovery of unfinished learning, overall, and
+  by district, school, and student groups?
+
+
+#  Summary of Results
+
+##	Participation
+
+Non-participation^[We assume that being in the data file without a scale score indicates non-participation. We did not have demographic variables for these non-participating students and where therefore only able to examine non-participation by grade, school and district.]
+may jeopardize our ability to understand performance, either overall or for some
+groups of students (e.g., by student demographic or gender groups, or by schools
+or districts). The foundational value of evaluating and reporting participation
+rates, then, is that we can provide direct information about who is included in
+test score results and who is not. Knowing who the results describe and who they
+do not describe, will help us interpret student achievement in terms of both status
+and trend. Such information can then be used to accurately identify student learning
+needs and successes, overall and at group levels, and to monitor progress in their
+recovery of learning post-pandemic.
+
+The overall participation rate in 2021 for the ILEARN assessment was 99.7% in ELA
+and 99.6% in Mathematics. These participation rates mean that 1,271 students who
+were eligible did not test in ELA out of 485,823 eligible students, and that 1,665
+students who were eligible did not test in Mathematics out of 485,429 eligible
+students.
+
+The students who did not participate were more often in higher grades (e.g., in
+ELA 349 non-participating students were in grade 8 compared to the 111 non-participating
+students in grade). Also, students who did not participate were also more often
+in lower achievement levels in 2019 than students who participated (e.g., in ELA
+50.0% of the non-participating students were in the lowest achievement level,
+Below Proficiency, in 2019 whereas 28.5% of participating students were classified
+as Below Proficiency in 2019).
+
+Non-participation also clustered within certain schools. In ELA out of the 1,799
+schools, 447 schools had at least one student who did not test. A smaller number
+of these schools accounted for the majority of the students who did not participate.
+In ELA, 96 schools accounted for 58.7% of the non-participation. Similarly, for
+Mathematics, 115 schools accounted for 62.0% of the non-participation. See Figures
+1A and 2A for more detail.
+
+One simple way to check whether non-participation could impact our overall
+conclusions is by replacing the missing scale scores and achievement levels of
+students who did not participate. We do so by substituting in the lowest and
+highest observed scale scores and achievement levels for each non-participating
+student, and then computing state-level mean scale scores and percent proficient
+based on observed scores and proficiency classification, for 1) students present
+in the data, 2) students who are present combined with those who are missing where
+each missing student is assigned the lowest observed score and achievement level,
+and 3) students who are present combined with those who are missing where each
+missing student is assigned the highest observed score and achievement level.
+
+At the state level, these substitutions resulted in differences in state-level
+mean scale scores that ranged from approximately 0.5 to 2.0 scale score points
+and percent proficient and above values that range from approximately 0.1% to 0.4%
+(i.e., a quarter of a percent). These differences can be considered the maximum
+differences that would have been noted if all missing students had participated
+and scored at the highest and lowest observed among those who did test. This
+represents the most conservative view of the possible effect of missing students.
+
+At the school level, these same substitutions of extreme scores and achievement
+levels result in changes in median scale scores ranging from approximately 3.4
+to 6.4 scale score points and percent proficient and above values that range from
+0.1% to 1.3%.
+
+
+##  Status
+[TBD based on status outputs—brief summary of results that include ranges of scores, PLs, and changes in both from 2019 to 2021.]
+
+##  Growth
+[TBD based on growth outputs—brief summary of results that include ranges of scores, PLs, and changes in both from 2019 to 2021.]

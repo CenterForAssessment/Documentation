@@ -110,6 +110,12 @@ Indiana_SGP_LONG_Data[, ACHIEVEMENT_ProfandAbove := plyr::mapvalues(ACHIEVEMENT_
 
 Indiana_SGP_LONG_Data$ACHIEVEMENT_ProfandAbove[is.na(Indiana_SGP_LONG_Data$ACHIEVEMENT_LEVEL)] <- NA
 
+Indiana_SGP_LONG_Data[, PRIOR_ACHIEVEMENT_ProfandAbove := plyr::mapvalues(ACHIEVEMENT_LEVEL_PRIOR,
+                           from = c("Level 1", "Level 2", "Level 3",
+                                    "Level 4", "Level 5", "No Score"),
+                           to  =  c("Not Proficient", "Not Proficient", "Not Proficient",
+                                    "Proficient", "Proficient", NA))]
+
 ###   For later use with WIDA_IN
 ###   Only works ~decent~ for grades 3:8... duh!
 # Indiana_Demographics <-
@@ -306,5 +312,5 @@ Report_Data[["State_Assessment"]] <- copy(Indiana_SGP_LONG_Data); rm(Indiana_SGP
 Report_Data[["ELP_Assessment"]] <- copy(WIDA_IN_SGP_LONG_Data); rm(WIDA_IN_SGP_LONG_Data)
 Report_Data[["Interim_Assessment"]] <- copy(Indiana_NWEA_Data_2021); rm(Indiana_NWEA_Data_2021)
 
-save(Report_Data, file = "../Data/Report_Data.Rdata")
-setwd("..")
+if (!dir.exists(file.path("..", "Data"))) dir.create(file.path("..", "Data"))
+save(Report_Data, file = file.path("..", "Data", "Report_Data.Rdata"))

@@ -127,7 +127,6 @@ source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", 
 ##   The following script will merge the rmd.files (universal) and custom.files lists and return 'rmd.files' to be used in next steps
 # custom.files <- list(...) # override defaults if desired.  Otherwise a message that universal list will be used.
 
-
 custom.files <- list(
   report = list(
     file.order = c(
@@ -156,7 +155,7 @@ custom.files <- list(
     )),
     appendices = list(
       A = list(
-        title = "Participation Supplimental Analyses",
+        title = "Participation Analyses",
         file.order = c(
           "setup_participation_appendix.Rmd",   #  Should be appendix specific (counter override, etc.)
           "params.Rmd",  #  Could be appendix specific - params_appendix_a.Rmd

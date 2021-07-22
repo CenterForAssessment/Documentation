@@ -60,35 +60,35 @@ institutions = c("DISTRICT_NUMBER", "SCHOOL_NUMBER")
 
 long.to.wide.vars <- c(default.vars, institutions, demographics)
 
-ILEARN_WIDE <- dcast(long_data,
+wide_data <- dcast(long_data,
                   ID + CONTENT_AREA ~ YEAR, sep=".", drop=FALSE, value.var=long.to.wide.vars)
 
 ###   Probably only needed for missing data (student attrition?) analysis:
-# summary(ILEARN_WIDE[, grep("GRADE", names(ILEARN_WIDE), value=T), with=FALSE])
+# summary(wide_data[, grep("GRADE", names(wide_data), value=T), with=FALSE])
 for (i in 1:4) { # Do this a couple times
-  ILEARN_WIDE[is.na(GRADE.2016), GRADE.2016 := GRADE.2017-1L]
-  ILEARN_WIDE[is.na(GRADE.2017), GRADE.2017 := GRADE.2018-1L]
-  ILEARN_WIDE[is.na(GRADE.2017), GRADE.2017 := GRADE.2019-2L]
-  ILEARN_WIDE[is.na(GRADE.2018), GRADE.2018 := GRADE.2019-1L]
-  ILEARN_WIDE[is.na(GRADE.2018), GRADE.2018 := GRADE.2021-3L]
-  ILEARN_WIDE[is.na(GRADE.2019), GRADE.2019 := GRADE.2021-2L]
+  wide_data[is.na(GRADE.2016), GRADE.2016 := GRADE.2017-1L]
+  wide_data[is.na(GRADE.2017), GRADE.2017 := GRADE.2018-1L]
+  wide_data[is.na(GRADE.2017), GRADE.2017 := GRADE.2019-2L]
+  wide_data[is.na(GRADE.2018), GRADE.2018 := GRADE.2019-1L]
+  wide_data[is.na(GRADE.2018), GRADE.2018 := GRADE.2021-3L]
+  wide_data[is.na(GRADE.2019), GRADE.2019 := GRADE.2021-2L]
 
-  ILEARN_WIDE[is.na(GRADE.2021), GRADE.2021 := GRADE.2019+2L]
-  ILEARN_WIDE[is.na(GRADE.2021), GRADE.2021 := GRADE.2018+3L]
-  ILEARN_WIDE[is.na(GRADE.2019), GRADE.2019 := GRADE.2018+1L]
-  ILEARN_WIDE[is.na(GRADE.2019), GRADE.2019 := GRADE.2017+2L]
-  ILEARN_WIDE[is.na(GRADE.2019), GRADE.2019 := GRADE.2016+3L]
-  ILEARN_WIDE[is.na(GRADE.2018), GRADE.2018 := GRADE.2017+1L]
-  ILEARN_WIDE[is.na(GRADE.2018), GRADE.2018 := GRADE.2016+2L]
-  ILEARN_WIDE[is.na(GRADE.2017), GRADE.2017 := GRADE.2016+1L]
+  wide_data[is.na(GRADE.2021), GRADE.2021 := GRADE.2019+2L]
+  wide_data[is.na(GRADE.2021), GRADE.2021 := GRADE.2018+3L]
+  wide_data[is.na(GRADE.2019), GRADE.2019 := GRADE.2018+1L]
+  wide_data[is.na(GRADE.2019), GRADE.2019 := GRADE.2017+2L]
+  wide_data[is.na(GRADE.2019), GRADE.2019 := GRADE.2016+3L]
+  wide_data[is.na(GRADE.2018), GRADE.2018 := GRADE.2017+1L]
+  wide_data[is.na(GRADE.2018), GRADE.2018 := GRADE.2016+2L]
+  wide_data[is.na(GRADE.2017), GRADE.2017 := GRADE.2016+1L]
 }
 
 meas.list <- vector(mode = "list", length = length(long.to.wide.vars))
-meas.list <- lapply(long.to.wide.vars, function(f) meas.list[[f]] <- grep(paste0(f, "[.]"), names(ILEARN_WIDE)))
+meas.list <- lapply(long.to.wide.vars, function(f) meas.list[[f]] <- grep(paste0(f, "[.]"), names(wide_data)))
 names(meas.list) <- long.to.wide.vars
 
 ###   First stretch out to get missings in log data
-tmp_long <- melt(ILEARN_WIDE, id = c("ID", "CONTENT_AREA"), variable.name = "YEAR", measure=meas.list)
+tmp_long <- melt(wide_data, id = c("ID", "CONTENT_AREA"), variable.name = "YEAR", measure=meas.list)
 
 ##  Exclude non-existent GRADE levels
 tmp_long <- tmp_long[GRADE %in% 3:8]
@@ -106,7 +106,7 @@ tmp_long[, ACHIEVEMENT_LEVEL := factor(ACHIEVEMENT_LEVEL, levels=c("Below", "App
 tmp_long[, SOCIO_ECONOMIC_STATUS := factor(SOCIO_ECONOMIC_STATUS, levels=c("Free", "Reduced", "Paid", NA))]
 
 ##    Final WIDE dataset with missing GRADE and demographics filled in
-ILEARN_WIDE <- dcast(tmp_long,
+wide_data <- dcast(tmp_long,
                   ID + CONTENT_AREA ~ YEAR, sep=".", drop=FALSE, value.var=long.to.wide.vars)
 
 
@@ -121,14 +121,14 @@ if (!dir.exists(plot_directory)) dir.create(plot_directory, recursive=TRUE)
 svg(file.path(plot_directory, "SS_Histograms-All_Grades.svg"))
 par(mfrow = c(3, 1))
 # 2019
-histMiss(as.data.frame(ILEARN_WIDE[GRADE.2019 %in% 4:8, c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]),
+histMiss(as.data.frame(wide_data[GRADE.2019 %in% 4:8, c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]),
          main = "Missing 2019 to 2018 - All Grades/Subjects", breaks=150, interactive=FALSE, only.miss=FALSE)
 # abline(v=0, col="green", lwd=2)
-histMiss(as.data.frame(ILEARN_WIDE[GRADE.2019 %in% 5:8, c("SCALE_SCORE.2017", "SCALE_SCORE.2019")]),
+histMiss(as.data.frame(wide_data[GRADE.2019 %in% 5:8, c("SCALE_SCORE.2017", "SCALE_SCORE.2019")]),
          main = "Missing 2019 to 2017 - All Grades/Subjects", breaks=150, interactive=FALSE, only.miss=FALSE)
 
 # 2021
-histMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5:8, c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]),
+histMiss(as.data.frame(wide_data[GRADE.2021 %in% 5:8, c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]),
          main = "Missing 2021 to 2019 - All Grades/Subjects", breaks=150, interactive=FALSE, only.miss=FALSE)
 # abline(v=0, col="green", lwd=2)
 dev.off()
@@ -142,18 +142,18 @@ math.cut.2yp<- SGPstateData[["IN"]][["Achievement"]][["Cutscores"]][["MATHEMATIC
 svg(file.path(plot_directory, "SS_Histograms-G5.svg"))
 par(mfrow = c(3, 1))
 # 2019
-histMiss(as.data.frame(ILEARN_WIDE[GRADE.2019 %in% 5, c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]),
+histMiss(as.data.frame(wide_data[GRADE.2019 %in% 5, c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]),
          main = "Missing 2019 to 2018 - 5th Grade", breaks=150, interactive=FALSE, only.miss=FALSE)
 abline(v=ela.cut.1yp, col="green", lwd=2)
 abline(v=math.cut.1yp, col="green", lwd=2)
 
-histMiss(as.data.frame(ILEARN_WIDE[GRADE.2019 %in% 5, c("SCALE_SCORE.2017", "SCALE_SCORE.2019")]),
+histMiss(as.data.frame(wide_data[GRADE.2019 %in% 5, c("SCALE_SCORE.2017", "SCALE_SCORE.2019")]),
          main = "Missing 2019 to 2017 - 5th Grade", breaks=150, interactive=FALSE, only.miss=FALSE)
 abline(v=ela.cut.2yp, col="green", lwd=2)
 abline(v=math.cut.2yp, col="green", lwd=2)
 
 # 2021
-histMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5, c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]),
+histMiss(as.data.frame(wide_data[GRADE.2021 %in% 5, c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]),
          main = "Missing 2021 to 2019 - 5th Grade", breaks=150, interactive=FALSE, only.miss=FALSE)
 abline(v=ela.cut.2yp, col="green", lwd=2)
 abline(v=math.cut.2yp, col="green", lwd=2)
@@ -163,39 +163,39 @@ dev.off()
 svg(file.path(plot_directory, "SS_Histograms-Mid_Grades.svg"))
 par(mfrow = c(3, 1))
 # 2019
-histMiss(as.data.frame(ILEARN_WIDE[GRADE.2019 %in% 6:8, c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]),
+histMiss(as.data.frame(wide_data[GRADE.2019 %in% 6:8, c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]),
          main = "Missing 2019 to 2018 - Middle Grades/Subjects", breaks=150, interactive=FALSE, only.miss=FALSE)
-histMiss(as.data.frame(ILEARN_WIDE[GRADE.2019 %in% 6:8, c("SCALE_SCORE.2017", "SCALE_SCORE.2019")]),
+histMiss(as.data.frame(wide_data[GRADE.2019 %in% 6:8, c("SCALE_SCORE.2017", "SCALE_SCORE.2019")]),
          main = "Missing 2019 to 2017 - Middle Grades/Subjects", breaks=150, interactive=FALSE, only.miss=FALSE)
 
 # 2021
-histMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 6:8, c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]),
+histMiss(as.data.frame(wide_data[GRADE.2021 %in% 6:8, c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]),
          main = "Missing 2021 to 2019 - Middle Grades/Subjects", breaks=150, interactive=FALSE, only.miss=FALSE)
 dev.off()
 
-# marginplot(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5 & CONTENT_AREA == "ELA", c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]))
-# marginplot(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5 & CONTENT_AREA == "MATHEMATICS", c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]))
-# marginplot(as.data.frame(ILEARN_WIDE[GRADE.2019 %in% 5 & CONTENT_AREA == "ELA", c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]))
-# marginplot(as.data.frame(ILEARN_WIDE[GRADE.2019 %in% 5 & CONTENT_AREA == "MATHEMATICS", c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]))
+# marginplot(as.data.frame(wide_data[GRADE.2021 %in% 5 & CONTENT_AREA == "ELA", c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]))
+# marginplot(as.data.frame(wide_data[GRADE.2021 %in% 5 & CONTENT_AREA == "MATHEMATICS", c("SCALE_SCORE.2019", "SCALE_SCORE.2021")]))
+# marginplot(as.data.frame(wide_data[GRADE.2019 %in% 5 & CONTENT_AREA == "ELA", c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]))
+# marginplot(as.data.frame(wide_data[GRADE.2019 %in% 5 & CONTENT_AREA == "MATHEMATICS", c("SCALE_SCORE.2018", "SCALE_SCORE.2019")]))
 #
-# scattmatrixMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 8 & CONTENT_AREA == "MATHEMATICS", c("SCALE_SCORE.2018", "SCALE_SCORE.2019", "SCALE_SCORE.2021")]), interactive=FALSE)
-# scattmatrixMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 8 & CONTENT_AREA == "MATHEMATICS", c("SCALE_SCORE.2016", "SCALE_SCORE.2017", "SCALE_SCORE.2019")]), interactive=FALSE)
+# scattmatrixMiss(as.data.frame(wide_data[GRADE.2021 %in% 8 & CONTENT_AREA == "MATHEMATICS", c("SCALE_SCORE.2018", "SCALE_SCORE.2019", "SCALE_SCORE.2021")]), interactive=FALSE)
+# scattmatrixMiss(as.data.frame(wide_data[GRADE.2021 %in% 8 & CONTENT_AREA == "MATHEMATICS", c("SCALE_SCORE.2016", "SCALE_SCORE.2017", "SCALE_SCORE.2019")]), interactive=FALSE)
 #
-# spineMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5:8, c("ACHIEVEMENT_LEVEL.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
-# spineMiss(as.data.frame(ILEARN_WIDE[GRADE.2019 %in% 5:8, c("ACHIEVEMENT_LEVEL.2017", "SCALE_SCORE.2019")]), interactive=FALSE, only.miss=FALSE)
-# spineMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5:8, c("ETHNICITY.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
-# spineMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5:8, c("SOCIO_ECONOMIC_STATUS.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
-# spineMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5:8, c("SPECIAL_EDUCATION_STATUS.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
-# spineMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5:8, c("ENGLISH_LANGUAGE_LEARNER_STATUS.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
-# spineMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5:8, c("GENDER.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
+# spineMiss(as.data.frame(wide_data[GRADE.2021 %in% 5:8, c("ACHIEVEMENT_LEVEL.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
+# spineMiss(as.data.frame(wide_data[GRADE.2019 %in% 5:8, c("ACHIEVEMENT_LEVEL.2017", "SCALE_SCORE.2019")]), interactive=FALSE, only.miss=FALSE)
+# spineMiss(as.data.frame(wide_data[GRADE.2021 %in% 5:8, c("ETHNICITY.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
+# spineMiss(as.data.frame(wide_data[GRADE.2021 %in% 5:8, c("SOCIO_ECONOMIC_STATUS.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
+# spineMiss(as.data.frame(wide_data[GRADE.2021 %in% 5:8, c("SPECIAL_EDUCATION_STATUS.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
+# spineMiss(as.data.frame(wide_data[GRADE.2021 %in% 5:8, c("ENGLISH_LANGUAGE_LEARNER_STATUS.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
+# spineMiss(as.data.frame(wide_data[GRADE.2021 %in% 5:8, c("GENDER.2019", "SCALE_SCORE.2021")]), interactive=FALSE, only.miss=FALSE)
 
 svg(file.path(plot_directory, "ILEARN_Mosaic_AchLev_SES.svg"))
-mosaicMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5:8, c("ACHIEVEMENT_LEVEL.2019", "SOCIO_ECONOMIC_STATUS.2019", "SCALE_SCORE.2021")]),
+mosaicMiss(as.data.frame(wide_data[GRADE.2021 %in% 5:8, c("ACHIEVEMENT_LEVEL.2019", "SOCIO_ECONOMIC_STATUS.2019", "SCALE_SCORE.2021")]),
            highlight = 3, plotvars = 1:2, miss.labels = FALSE)
 dev.off()
 
 svg(file.path(plot_directory, "ILEARN_Mosaic_Ethn_SES.svg"))
-mosaicMiss(as.data.frame(ILEARN_WIDE[GRADE.2021 %in% 5:8, c("ETHNICITY.2019", "SOCIO_ECONOMIC_STATUS.2019", "SCALE_SCORE.2021")]),
+mosaicMiss(as.data.frame(wide_data[GRADE.2021 %in% 5:8, c("ETHNICITY.2019", "SOCIO_ECONOMIC_STATUS.2019", "SCALE_SCORE.2021")]),
           highlight = 3, plotvars = 1:2, miss.labels = FALSE, only.miss=FALSE)
 dev.off()
 
@@ -203,7 +203,7 @@ dev.off()
 ###   Tables of Attrition and non-participation
 
 attrit_2021 <-
-  ILEARN_WIDE[GRADE.2021 %in% 5:8 & !is.na(SCALE_SCORE.2019),
+  wide_data[GRADE.2021 %in% 5:8 & !is.na(SCALE_SCORE.2019),
                 .(Pct_Attrit = round(sum(is.na(VALID_CASE.2021))/.N, 3)*100,
                   Total_Attrit = sum(is.na(VALID_CASE.2021)),
                   Total_Enrolled = sum(!is.na(VALID_CASE.2021))),
@@ -212,7 +212,7 @@ setnames(attrit_2021, 2, "GRADE")
 attrit_2021[, YEAR := "2019_to_2021"]
 
 attrit_2019 <-
-  ILEARN_WIDE[GRADE.2019 %in% 5:8 & !is.na(SCALE_SCORE.2017),
+  wide_data[GRADE.2019 %in% 5:8 & !is.na(SCALE_SCORE.2017),
                .(Pct_Attrit = round(sum(is.na(VALID_CASE.2019))/.N, 3)*100,
                  Total_Attrit = sum(is.na(VALID_CASE.2019)),
                  Total_Enrolled = sum(!is.na(VALID_CASE.2019))),
@@ -221,7 +221,7 @@ setnames(attrit_2019, 2, "GRADE")
 attrit_2019[, YEAR := "2017_to_2019"]
 
 attrit_2018 <-
-  ILEARN_WIDE[GRADE.2018 %in% 5:8 & !is.na(SCALE_SCORE.2016),
+  wide_data[GRADE.2018 %in% 5:8 & !is.na(SCALE_SCORE.2016),
                .(Pct_Attrit = round(sum(is.na(VALID_CASE.2018))/.N, 3)*100,
                  Total_Attrit = sum(is.na(VALID_CASE.2018)),
                  Total_Enrolled = sum(!is.na(VALID_CASE.2018))),
@@ -235,16 +235,16 @@ attrit_wide <- dcast(rbindlist(list(attrit_2018, attrit_2019, attrit_2021)),
 Report_Analyses[["participation"]][[assessment]][["state_attrition"]] <- attrit_wide
 
 
-##    Attrition and non-participation
-# ILEARN_WIDE[GRADE.2021 %in% 5:8 & !is.na(SCALE_SCORE.2019), .(round(sum(is.na(SCALE_SCORE.2021))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2021)]
-# ILEARN_WIDE[GRADE.2019 %in% 5:8 & !is.na(SCALE_SCORE.2018), .(round(sum(is.na(SCALE_SCORE.2019))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2019)]
-# ILEARN_WIDE[GRADE.2019 %in% 5:8 & !is.na(SCALE_SCORE.2017), .(round(sum(is.na(SCALE_SCORE.2019))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2019)]
+# ##    Attrition and non-participation
+# wide_data[GRADE.2021 %in% 5:8 & !is.na(SCALE_SCORE.2019), .(round(sum(is.na(SCALE_SCORE.2021))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2021)]
+# wide_data[GRADE.2019 %in% 5:8 & !is.na(SCALE_SCORE.2018), .(round(sum(is.na(SCALE_SCORE.2019))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2019)]
+# wide_data[GRADE.2018 %in% 5:8 & !is.na(SCALE_SCORE.2017), .(round(sum(is.na(SCALE_SCORE.2018))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2018)]
 #
 # ##    Non-participation Only
-# ILEARN_WIDE[VALID_CASE.2021 == "VALID_CASE" & GRADE.2021 %in% 5:8 & !is.na(SCALE_SCORE.2019), .(round(sum(is.na(SCALE_SCORE.2021))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2021)]
-# ILEARN_WIDE[VALID_CASE.2019 == "VALID_CASE" & GRADE.2019 %in% 5:8 & !is.na(SCALE_SCORE.2017), .(round(sum(is.na(SCALE_SCORE.2019))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2019)]
-# ILEARN_WIDE[VALID_CASE.2018 == "VALID_CASE" & GRADE.2018 %in% 5:8 & !is.na(SCALE_SCORE.2016), .(round(sum(is.na(SCALE_SCORE.2018))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2019)]
+# wide_data[VALID_CASE.2021 == "VALID_CASE" & GRADE.2021 %in% 5:8 & !is.na(SCALE_SCORE.2019), .(round(sum(is.na(SCALE_SCORE.2021))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2021)]
+# wide_data[VALID_CASE.2019 == "VALID_CASE" & GRADE.2019 %in% 5:8 & !is.na(SCALE_SCORE.2017), .(round(sum(is.na(SCALE_SCORE.2019))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2019)]
+# wide_data[VALID_CASE.2018 == "VALID_CASE" & GRADE.2018 %in% 5:8 & !is.na(SCALE_SCORE.2016), .(round(sum(is.na(SCALE_SCORE.2018))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2018)]
 #
 # ##    Attrition Only
-# ILEARN_WIDE[GRADE.2021 %in% 5:8 & !is.na(SCALE_SCORE.2019), .(round(sum(is.na(VALID_CASE.2021))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2021)]
-# ILEARN_WIDE[GRADE.2019 %in% 5:8 & !is.na(SCALE_SCORE.2017), .(round(sum(is.na(VALID_CASE.2019))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2019)]
+# wide_data[GRADE.2021 %in% 5:8 & !is.na(SCALE_SCORE.2019), .(round(sum(is.na(VALID_CASE.2021))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2021)]
+# wide_data[GRADE.2019 %in% 5:8 & !is.na(SCALE_SCORE.2017), .(round(sum(is.na(VALID_CASE.2019))/.N, 3)*100), keyby = .(CONTENT_AREA, GRADE.2019)]
