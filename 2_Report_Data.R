@@ -14,6 +14,16 @@ require(SGP)
 require(data.table)
 require(plyr)
 
+Z <- function(data_table, var.to.standardize, reference.year = NULL, rm.na = TRUE) {
+  YEAR <- NULL
+  x <- data_table[, get(var.to.standardize)]
+  if (!is.null(reference.year)){
+    y <- data_table[YEAR==reference.year, get(var.to.standardize)]
+  } else y <- x
+  (x - mean(y, na.rm = rm.na)) / sd(y, na.rm = rm.na)
+}
+
+
 ###   Locate the "Universal_Content" directory (assume woring directory is ./Documentation)
 universal.content.path <- file.path("..", "..", "..", "Universal_Content")
 
@@ -64,18 +74,31 @@ Indiana_SGP_LONG_Data[is.na(ACHIEVEMENT_LEVEL_ORIGINAL_PRIOR), ACHIEVEMENT_LEVEL
 Indiana_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR := shift(ACHIEVEMENT_LEVEL, 1), by = list(ID, CONTENT_AREA)]
 # table(Indiana_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR, ACH_LEV_P2], exclude=NULL) # for testing - create a alternate version first and check equality for non-NA values
 
-###   Create Lagged Scale Score (EQUATED) variables that include missing scores (and others potentially)
+###   Create Lagged Scale Score (EQUATED and STANDARDIZED) variables that include missing scores (and others potentially)
+
+##    Standardize SCALE_SCORE by CONTENT_AREA and GRADE using 2019 norms
+Indiana_SGP_LONG_Data[, SCALE_SCORE_STANDARDIZED := Z(.SD, "SCALE_SCORE", reference.year = "2019"), by = list(CONTENT_AREA, GRADE), .SDcols = c("YEAR", "CONTENT_AREA", "GRADE", "SCALE_SCORE")]
+Indiana_SGP_LONG_Data[, as.list(round(summary(SCALE_SCORE_STANDARDIZED), 3)), keyby = c("YEAR", "CONTENT_AREA", "GRADE")]
+
+setkeyv(Indiana_SGP_LONG_Data, shift.key)
+
 Indiana_SGP_LONG_Data[, c("SCALE_SCORE_PRIOR_1YEAR", "SCALE_SCORE_PRIOR_2YEAR") := shift(SCALE_SCORE, 1:2), by = list(ID, CONTENT_AREA)]
+Indiana_SGP_LONG_Data[, c("SCALE_SCORE_PRIOR_STANDARDIZED_1YEAR", "SCALE_SCORE_PRIOR_STANDARDIZED_2YEAR") := shift(SCALE_SCORE_STANDARDIZED, 1:2), by = list(ID, CONTENT_AREA)]
 ##    Fix 2021 Lags since no 2020 data:
 Indiana_SGP_LONG_Data[YEAR == '2021', SCALE_SCORE_PRIOR_2YEAR := SCALE_SCORE_PRIOR_1YEAR]
+Indiana_SGP_LONG_Data[YEAR == '2021', SCALE_SCORE_PRIOR_STANDARDIZED_2YEAR := SCALE_SCORE_PRIOR_STANDARDIZED_1YEAR]
 Indiana_SGP_LONG_Data[YEAR == '2021', SCALE_SCORE_PRIOR_1YEAR := NA]
+Indiana_SGP_LONG_Data[YEAR == '2021', SCALE_SCORE_PRIOR_STANDARDIZED_1YEAR := NA]
 # table(Indiana_SGP_LONG_Data[, YEAR, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL)
 # table(Indiana_SGP_LONG_Data[, GRADE, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL) # Remove 2YEAR priors for Grades 3 & 4 - repeaters
 Indiana_SGP_LONG_Data[GRADE %in% c(3, 4), SCALE_SCORE_PRIOR_2YEAR := NA]
+Indiana_SGP_LONG_Data[GRADE %in% c(3, 4), SCALE_SCORE_PRIOR_STANDARDIZED_2YEAR := NA]
 Indiana_SGP_LONG_Data[GRADE == 3, SCALE_SCORE_PRIOR_1YEAR := NA]
+Indiana_SGP_LONG_Data[GRADE == 3, SCALE_SCORE_PRIOR_STANDARDIZED_1YEAR := NA]
 # table(Indiana_SGP_LONG_Data[YEAR=='2019', is.na(SCALE_SCORE_PRIOR_BASELINE), is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL)
 # cor(Indiana_SGP_LONG_Data[, SCALE_SCORE_PRIOR_BASELINE, SCALE_SCORE_PRIOR_2YEAR], use='complete.obs') # Not perfect.  Use BASELINE data when available:
 Indiana_SGP_LONG_Data[!is.na(SCALE_SCORE_PRIOR_BASELINE), SCALE_SCORE_PRIOR_2YEAR := SCALE_SCORE_PRIOR_BASELINE]
+# Indiana_SGP_LONG_Data[!is.na(SCALE_SCORE_PRIOR_STANDARDIZED_BASELINE), SCALE_SCORE_PRIOR_STANDARDIZED_2YEAR := SCALE_SCORE_PRIOR_STANDARDIZED_BASELINE] # Keep on 2019 scale!
 
 ###   Create Prior Score Deciles
 source(file.path(universal.content.path, "Learning_Loss_Analysis", "Functions", "Quantile_Cut_Functions.R"))
@@ -115,6 +138,9 @@ Indiana_SGP_LONG_Data[, PRIOR_ACHIEVEMENT_ProfandAbove := plyr::mapvalues(ACHIEV
                                     "Level 4", "Level 5", "No Score"),
                            to  =  c("Not Proficient", "Not Proficient", "Not Proficient",
                                     "Proficient", "Proficient", NA))]
+
+###   Remove redundant/replaced variables
+Indiana_SGP_LONG_Data[, c("SCALE_SCORE_PRIOR", "SCALE_SCORE_PRIOR_STANDARDIZED", "SCALE_SCORE_PRIOR_BASELINE", "SCALE_SCORE_PRIOR_STANDARDIZED_BASELINE") := NULL]
 
 ###   For later use with WIDA_IN
 ###   Only works ~decent~ for grades 3:8... duh!
@@ -314,3 +340,5 @@ Report_Data[["Interim_Assessment"]] <- copy(Indiana_NWEA_Data_2021); rm(Indiana_
 
 if (!dir.exists(file.path("..", "Data"))) dir.create(file.path("..", "Data"))
 save(Report_Data, file = file.path("..", "Data", "Report_Data.Rdata"))
+
+setwd("..")

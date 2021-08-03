@@ -32,11 +32,11 @@ custom.config <- list(
     organization = "Indiana Department of Education",
     org.head = "Dr. Katie Jenner, Secretary of Education",
     github.repo = "CenterForAssessment/SGP_Research/tree/master/Indiana/Learning_Loss_Analysis",
-    acknowledgements = "the entire staff of Office of School Accountability, and particularly Maggie Paino, Brenda Erbse and Vanessa Deveau Bachle,"
+    acknowledgements = "the entire staff of Office of School Accountability, and particularly Maggie Paino, Brenda Erbse, Vanessa Deveau Bachle and Ron Sandlin,"
   ),
   # Override defaults for author/Affil
   top.level = list(  #  Title/subtitle, author.names, author.affil, date
-    title = "Academic Impact in a Year of Disruptions",
+    title = "Education in Indiana During a Year of Disruptions",
     subtitle = "Student Achievement and Growth during the COVID-19 Pandemic",
     draft = TRUE  #  default if TRUE - "DRAFT REPORT -- DO NOT CITE OR CIRCULATE" #
   ),
@@ -132,14 +132,14 @@ custom.files <- list(
     file.order = c(
       "setup.Rmd",
       "params.Rmd",
-      "0_Executive_Summary.Rmd", # implies 0_Executive_Summary_Text.Rmd
-      "1_Intro_Background.Rmd",
-      "1_Intro_Legislative_Charge.Rmd",
-      "1_Intro_Research_Questions.Rmd",
-      "1_Intro_Data_Sources.Rmd",
-      "1_Intro_Methods.Rmd",
-      "2_Participate__Overview.Rmd",
-      "2_Participate_Enrolled_Students.Rmd"#,
+      "0_Executive_Summary.Rmd"#, # implies 0_Executive_Summary_Text.Rmd
+      # "1_Intro_Background.Rmd",
+      # "1_Intro_Legislative_Charge.Rmd",
+      # "1_Intro_Research_Questions.Rmd",
+      # "1_Intro_Data_Sources.Rmd",
+      # "1_Intro_Methods.Rmd",
+      # "2_Participate__Overview.Rmd",
+      # "2_Participate_Enrolled_Students.Rmd"#,
       # "2_Participate_Counts.Rmd",
       # "2_Participate_Mode_of_Instruction.Rmd",
       # "2_Participate_Attendance.Rmd",
@@ -152,20 +152,22 @@ custom.files <- list(
       # "3_Impact_Synthesis.Rmd",
       # "4_Discussion__Overview.Rmd",
       # "9_Summary.Rmd"
-    )),
-    appendices = list(
-      A = list(
-        title = "Participation Analyses",
-        file.order = c(
-          "setup_participation_appendix.Rmd",   #  Should be appendix specific (counter override, etc.)
-          "params.Rmd",  #  Could be appendix specific - params_appendix_a.Rmd
-          "Appendix_Participation_Intro.Rmd",
-          "Appendix_Participation_by_School.Rmd",
-          "Appendix_Participation_MinMax_Replace.Rmd"
-        ),
-        references = NULL
-      )
-    ))
+    ),
+    references = NULL),
+  appendices = list(
+    # A = list(
+    #   title = "Participation Analyses",
+    #   file.order = c(
+    #     "setup_participation_appendix.Rmd",   #  Should be appendix specific (counter override, etc.)
+    #     "params.Rmd",  #  Could be appendix specific - params_appendix_a.Rmd
+    #     "Appendix_Participation_Intro.Rmd",
+    #     "Appendix_Participation_by_School.Rmd",
+    #     "Appendix_Participation_MinMax_Replace.Rmd"
+    #   ),
+    #   references = NULL
+    # )
+  )
+)
 
 source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
 
