@@ -4,13 +4,17 @@
 ###                                                                          ###
 ################################################################################
 
+if (!exists("school.aggregates")) {
+  
+}
+
 ###   Locate the "Universal_Content" directory (assume woring directory is ./Documentation)
 universal.content.path <- file.path("..", "..", "..", "Universal_Content")
 
 ###   Load required packages and custom functions
-library(ggplot2)
-library(gghighlight)
-library(dplyr, warn.conflicts = FALSE)
+require(ggplot2)
+require(gghighlight)
+require(dplyr, warn.conflicts = FALSE)
 
 source(file.path(universal.content.path, "Learning_Loss_Analysis", "Functions", "shift_legend.R"))
 

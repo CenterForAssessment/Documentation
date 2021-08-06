@@ -1,252 +1,501 @@
 PRM__draft.text__PRM
 
+## Background
+
 At the end of January 2020, the World Health Organization declared the novel
 coronavirus (COVID-19) a public health emergency of international concern and the
 United States Secretary of Health and Human Services declared a public health
 emergency for the United States. Although many continued to carry out their daily
-lives without interruption, drastic changes began to occur including in Indiana
-when Governor Eric Holcomb declared a [public health disaster emergency](https://www.in.gov/gov/files/20-02ExecutiveOrderDeclarationofPublicHealthEmergencyforCOVID-19FINAL.pdf)
+lives without interruption, drastic changes began to occur in Indiana when Governor
+Eric Holcomb declared a [public health disaster emergency](https://www.in.gov/gov/files/20-02ExecutiveOrderDeclarationofPublicHealthEmergencyforCOVID-19FINAL.pdf)
 on March 6, 2020. Executive orders followed from Governor Holcomb mandating that
-all public and private schools close and cease in-person instruction
-[temporarily](https://www.in.gov/gov/files/EO_20-05.pdf), and ultimately for the
-[remainder of the 2019-2020 school year](https://www.in.gov/gov/files/Executive-Order-20-16-Education.pdf).
+all public and private schools close and cease in-person instruction [temporarily](https://www.in.gov/gov/files/EO_20-05.pdf),
+and ultimately requiring remote instruction for the [remainder of the 2019-2020
+school year](https://www.in.gov/gov/files/Executive-Order-20-16-Education.pdf).
 
-The sudden onset of these changes presented school leaders and educators with
-immediate challenges, and they quickly adapted operations to provide the services
-upon which students and families relied and to deliver continued access to education.
-Governor Holcomb [cancelled the administration of all statewide assessments](https://www.in.gov/gov/files/EO_20-05.pdf)
-and the Indiana Department of Education (IDOE) [requested and received a waiver](
-https://www.doe.in.gov/sites/default/files/essa/indiana-essa-waiver-request.pdf;
-https://www.doe.in.gov/sites/default/files/essa/used-essa-waiver-approval.pdf)
-from the federal requirement to administer statewide assessments.
+The sudden onset of these changes presented immediate challenges for school leaders
+and educators, and they quickly adapted operations to provide educational access
+and services upon which students and families relied in a way that ensured the
+safety and wellbeing of students and school staff. Ultimately, Governor Holcomb
+[cancelled the administration of all statewide assessments](https://www.in.gov/gov/files/EO_20-05.pdf)
+and the Indiana Department of Education (IDOE)
+[requested](https://www.doe.in.gov/sites/default/files/essa/indiana-essa-waiver-request.pdf)
+and [received](https://www.doe.in.gov/sites/default/files/essa/used-essa-waiver-approval.pdf)
+a waiver from the federal requirement to administer statewide assessments for the
+2019-2020 school year.
 
-On June 11, 2020, Governor Holcomb announced that public and private schools were
+On June 11, 2020, Governor Holcomb announced that Indiana's public and private schools were
 [permitted to reopen on July 1, 2020](https://www.in.gov/gov/files/Executive-Order-20-32-Stage-4.pdf)
 to provide in-person instruction during the 2020-2021 school year. In collaboration
-with other agencies, the IDOE published "Indiana’s Considerations for Learning and
-Safe Schools" [(IN-CLASS)](https://www.doe.in.gov/covid-19) to provide guidance
-for schools when navigating new protocols for re-opening and re-entry of school
-buildings. Ultimately, the IN-CLASS guidance signaled to schools that a return to
-in-person instruction did not equate to a return to "normal."
+with other state agencies, the IDOE published "Indiana's Considerations for
+Learning and Safe Schools" [(IN-CLASS)](https://www.doe.in.gov/COVID-19) to
+provide guidance for schools when navigating new protocols for re-opening and
+re-entry of school buildings. Ultimately, the IN-CLASS guidance signaled to schools
+that a return to in-person instruction did not equate to a return to "normal."
 
+Indiana, like all states, recognized the impact of COVID-19 on its education
+systems but grappled with the challenge of evaluating the academic impact of the
+COVID-19 pandemic on students, as well as appropriately responding to these
+impacts with intentional, targeted, and evidence-based resources. In response to
+this need, the Indiana General Assembly passed House Enrolled Act 1514-2021, and
+Governor Holcomb signed into law Public Law 211-2021. Public Law 211-2021 added
+Ind. Code &sect; 20-26-5-40.6, which requires the IDOE to conduct a "learning
+loss study" for the 2020-2021 and the 2021-2022 school years to identify specific
+subject areas, grade levels, and student groups that experienced an academic
+impact due to COVID-19. Further, the federal American Rescue Plan Act required
+states to carry out activities to address "learning loss" by supporting the
+implementation of evidence-based interventions that respond to student needs and
+address the disproportionate impact of COVID-19 on students. The IDOE contracted
+with the Center for Assessment to conduct a study that would provide reliable
+information on COVID-19's academic impact so educators, parents, and state leaders
+might better understand and support efforts that promote student achievement.
 
-<!--
-  If you wanted a table in the the text you'd add this here:
-  Doesn't seem to work in 'bookdown'...
-
-TXT__tbl.txt__TXT
-
--->
-
-Indiana, like all states, is currently grappling with the challenge of evaluating
-the academic impact that the pandemic has had, as well as how to make efficient,
-targeted use of resources to ameliorate learning losses. After more than a year
-of uncertainty and disruption that has been introduced into Indiana’s educational
-systems due to the COVID-19 Pandemic, we can begin to effectively assess the impact
-on student learning and achievement using statewide assessment data. Educators,
-parents, and leaders need good information to help them understand and support
-efforts to promote student achievement. Indeed, in the best of circumstances the
-key outcomes and implications of student assessment data are sometimes difficult
-to identify, and we are far from the best of circumstances.
-
-Understanding impact is clearly a daunting but vital task. What is meant by the
-term impact, and on who, what, and when? To be sure, there cannot be a one-size-fits-all
-approach to understanding the impact of the COVID-19 pandemic on student learning,
-and no single study can characterize it comprehensively. Nevertheless, the Indiana
-Department of Education has collected high quality assessment data that can be
-used to support its efforts to understand student learning and achievement during
-the pandemic to inform state and local response and recovery of learning.
 
 ##  Study Goals and Data
 
-The goal of this study is to provide Indiana stakeholders with actionable insights into
-how students were impacted academically by the pandemic. Who was impacted? In what were they impacted,
-and how much were they impacted.
+It is important to note that there cannot be a one-size-fits-all approach to
+understanding the impact of the COVID-19 pandemic on student learning, and no
+single study can comprehensively characterize impact. The goal of this study is
+to provide Indiana stakeholders with actionable insights into how students were
+impacted academically by the pandemic. Specifically, the study aims to provide
+additional context to student performance during the pandemic by identifying
+which students were impacted, in what content areas students were impacted, and
+the magnitude of that impact. Understanding COVID-19's impact on student learning
+is clearly a daunting but vital task to ensure students receive appropriate
+educational services.
 
-Any discussion of academic impact implies a comparison to a situation where the cause of the impact is absent: Where would the student be academically
-had the pandemic not occurred. The situation is analogous to what one encounters when driving through inclement weather like a blizzard. We can ask,
-"Where would we be along our journey if the blizzard hadn't occurred?" and answer that question using assumptions about normal rates of driving
-progress. We can do the same with academic impact using historical data on student progress.
+A discussion of academic impact implies a comparison to a situation where the
+cause of the impact is absent in order to answer the question, _Where would the
+student be academically had the pandemic not occurred?_ The pandemic together with
+all the accompanying disruptions to normal learning functioned as a headwind,
+slowing the academic progress of students starting in March 2020 and continuing
+through the 2020-2021 school year. The situation is analogous to that of a commuter
+who experiences a delay when driving due to an unforeseen event like a rain storm.
+We can ask, _Where would the commuter be along their journey if the rain storm
+had not occurred?_ and answer that question using assumptions about normal rates
+of progress in comparison with the actual progress that occurred. For purposes
+of determining academic impact, we use historical performance data to understand
+normal, pre-COVID, student progress and compare that to actual student progress
+in order to determine how the headwind of the pandemic slowed student academic
+progress.
 
-Addressing who, in what and how much students were impacted academically requires data. This study quantifies change in student
-academic performance in terms of both academic achievement and growth by using comprehensive current and
-historical assessment data from three sources:
+The IDOE has collected high-quality assessment data that can be used to support
+its efforts to understand student learning and achievement during the pandemic,
+and to inform state and local responses to support recovery of learning. This
+study quantifies change in student academic performance in terms of both academic
+achievement and growth by using comprehensive current and historical assessment
+data from three sources: Indiana Learning Evaluation and Readiness Network (ILEARN)
+summative assessment, WIDA-ACCESS (WIDA-ACCESS) for English Language Learners (ELLs)
+assessment, and NWEA Measures of Academic Progress (NWEA-MAP) interim assessment.
 
-*    Indiana Learning Evaluation and Readiness Network (ILEARN) data in grades 3 to 8 in ELA and mathematics
-*    WIDA ACCESS English Language Proficiency (ELP) data in grades K to 12
-*    NWEA Measures of Academic Progress (MAP) interim assessments are administered three times a year (fall, winter, and spring) by a large number of schools and school corporations in Indiana. Data from Fall 2020 and Winter 2020-2021 in grades K to 10 in ELA and mathematics was made available for analyses.
+The 2021 ILEARN summative assessment data are available for grades 3 to 8 in
+English/language arts and mathematics. The annual spring 2020 administration of
+the ILEARN assessment was cancelled due to COVID-19, necessitating the use of
+spring 2019 ILEARN data as the pre-pandemic point of comparison for analyses of
+pandemic-related academic impact.
 
-With the onset of the pandemic in March 2020 and the disruption of normal schooling, the pandemic functioned as a headwind, presumably slowing the
-academic progress of students beginning in March, 2020. Indiana's state assessment administration was also disrupted. Specifically, the
-annually administered ILEARN assessment was cancelled in spring, 2020. Pandemic related analyses involving the ILEARN assessment
-will necessarily have to utilize skip-year analyses, going back to 2019 as a pre-pandemic point of comparison.
+The 2021 WIDA-ACCESS assessment data are available for kindergarten to grade 12.
+Unlike the ILEARN assessment, the annually administered WIDA-ACCESS assessment
+was administered in early 2020 prior to the onset of the pandemic. Analyses
+involving WIDA-ACCESS will utilize 2020 as the pre-pandemic point of comparison.
 
-Unlike the ILEARN assessment, the annually administered WIDA ACCESS ELP assessment was administered
-in early 2020 prior to the onset of the pandemic. Analyses involving WIDA-ACCESS will utilize
-2020 as the pre-pandemic point of comparison.
+NWEA-MAP interim assessments are the most frequently used interim assessments in
+Indiana. The MAP interim assessments are administered three times a year (fall,
+winter, and spring), and data from fall 2020 and winter 2020-2021 for kindergarten
+to grade 10 in English/language arts and mathematics were made available for
+analyses through data sharing agreements. These interim assessment data comprised
+the first evidence received regarding the academic impact of the pandemic on
+students. Data for fall 2020 and winter 2020-2021 was made available including
+student growth data based upon historical growth norms that can be used to assess
+academic impact during the early part of the 2020-2021 academic year.
 
-Interim assessment data comprised the first evidence received regarding the academic impact of the pandemic on students.
-The most frequently used interim assessment in Indiana is the NWEA MAP assessment. Through data sharing agreements, the
-Indiana Department of Education receives MAP data for all students in the state taking the assessments. Data for
-Fall 2020 and Winter 2020-2021 was made available including student growth data based upon historical growth norms that can be used
-to assess academic impact during the early part of the 2020-2021 academic year.
-
-The availability of these three data sets places Indiana at the forefront of states nationally in using data to understand the academic impact of the
-pandemic. Clearly, the three data sets do not cover all ages of students nor all subjects in which students learn.
-However, they do support an essential first step in examining academic impact and discussing strategies for recovery that apply to all ages and
-subjects.
+The availability of these three, comprehensive data sets places Indiana at the
+forefront of states nationally in using data to understand the academic impact
+of the pandemic. Clearly, the three data sets do not cover all ages of students
+nor all subjects in which students learn. However, they do support an essential
+first step in examining academic impact and discussing strategies for recovery
+that apply to all ages and subjects.
 
 
-#  Research Questions
+##  Research Questions
 
-This study addresses three research questions:
+This study addresses three research topics:
 
-* __Student Population and Test Participation__ Who comprises the population of students in Indiana and who comprises the population for whom academic impact data is available?
-* __Academic Impact__ To what extent did COVID-19 disruptions impact student academic performance and learning outcomes? What content areas/domains did students experience academic impacts. Which student demographic and academic subgroups, schools, and school corporations experience academic impacts.
-* __Anticipated Recovery Time__ What is the anticipated academic recovery time based on the experienced COVID-19 disruptions?
+- **Student Population and Test Participation:** Who comprises the population of
+  students in Indiana and who comprises the population for whom academic impact
+  data is available?
+- **Academic Impact:** To what extent did COVID-19 disruptions impact student
+  academic performance and learning outcomes? In what content areas/domains did
+  students experience academic impacts? Which student demographic and academic
+  subgroups, schools, and school corporations experienced academic impacts?
+- **Anticipated Recovery Time:** What is the anticipated academic recovery time
+  based on the experienced COVID-19 disruptions?
+
 
 ## Student Population and Test Participation
 
-Descriptions of changes in student enrollment and test participation in 2021 is important for accurately
-interpreting student performance in terms of status, trend, and growth. Like most states, Indiana saw a drop in overall student enrollment
-in 2021. Public school PK-12 enrollment in 2020 was 1,050,614. This compares to 1,054,903 students in 2019.
+Descriptions of changes in student enrollment and test participation in 2021 are
+important for accurately interpreting student academic performance on those tests
+in terms of status (also referred to as achievement or attainment), trend, and
+growth. Like most states, Indiana saw a drop in overall student enrollment
+in 2021. Public school PK-12 enrollment in 2020 was 1,050,614. This compares to
+1,054,903 students in 2019.
 
-More significantly for the determination of academic impact is student participation as part of assessment data collection. Census level educational assessments like ILEARN and WIDA-ACCESS are critical for understanding the academic performance of students and, in turn, investigating the
-academic impact that the pandemic has had on students. The two population level data sources used for this student (ILEARN and WIDA-ACCESS) both had
-excellent participation in 2021, similar to participation in 2019 and 2020, respectively.
+More significantly for the determination of academic impact, though, is student
+participation as part of assessment data collection. Census level educational
+assessments like ILEARN and WIDA-ACCESS are critical for understanding the academic
+performance of students and, in turn, investigating the academic impact that the
+pandemic has had on students. The two population level data sources used for this
+study, ILEARN and WIDA-ACCESS, both had excellent participation in 2021 that was
+similar to participation in 2019 and 2020, respectively.
 
-* ILEARN participation rates were 97% in ELA and 97% in mathematics.
-* WIDA-ACCESS participation rates were 94%
-* NWEA-MAP is the most used interim assessment in Indiana. Participation rates amongst students in Indiana vary by grade (K to 10) and content area (ELA and mathematics). In general, participation rates ranged between 35 and 45% except in grades 9 and 10 where participation dips to near 20%.
 
-From a national perspective, the data available from Indiana's assessments is some of the most comprehensive available for the investigation of pandemic
-related academic impact in a state.
+TXT__tbl.txt__TXT
+
+
+NWEA-MAP is the most widely used interim assessment in Indiana. Coverage rates
+amongst Indiana students vary by grade (Kindergarten to grade 10) and content
+area (English/language arts and mathematics). In general, coverage rates
+ranged between 35% and 45%, except in grades 9 and 10 where coverage dipped
+to near 20% of Indiana's student population.
+
+The data assembled for investigating the academic impact of the pandemic on
+Indiana students is, from a national perspective, some of the best available due
+to little change in student enrollment, high participation rates, traditional
+test administration procedures including in person testing and alignment of data
+to state content standards. We have high confidence that the academic impact
+results derived from this data provide an accurate picture of where Indiana
+students are at this stage of the pandemic.
 
 
 ## Academic Impact
 
-The study of performance changes based on 2021 testing results will support an
-understanding of the pandemic’s near-term impact on student achievement. The term
-"impact" is often referenced broadly in educational settings and can, therefore,
-be unclear and diffused over many subjects, levels, types, and timelines, making
-it difficult to isolate the most important investigative or research questions to
-pursue. In the case of measuring the impact of the pandemic, the universal nature
-of the expected impact makes it impossible to compare students who have and have
-not been impacted. Therefore, the only link between the pandemic (as the cause)
-that impacts achievement (as the effect) is that it is an event that occurred
-between 2019 and 2021. There could be many other intervening variables for which
-simple comparisons have not accounted. Also, as addressed by evaluation of changes
-in enrollment and participation, data completeness and the surrounding testing
-and student conditions will also be important factors to consider in the
-interpretation of changes in status and growth at individual and aggregate levels.
+The study of performance changes based on 2021 testing results supports an
+understanding of the pandemic's near-term impact on student achievement and
+learning outcomes. It is important to note that there may be other intervening
+variables for which a study of performance changes may not account. Further, data
+completeness as well as accompanying testing and student conditions are important
+factors to consider in the interpretation of changes in status and growth at the
+individual and aggregate levels. Lastly, given the universal nature of the pandemic's
+impact, there is no control group with which to compare those students who have
+been impacted by the pandemic to those who have not. Therefore, student performance
+that is not influenced by pandemic-related conditions will need to be approximated
+using historical data.
 
-Therefore, student performance that is not influenced by pandemic-related conditions
-will need to be approximated using historical data, and the models used to evaluate
-impact will need to account for missing data. We identify the following questions
-as a means to guide our investigation of the pandemic’s impact on student achievement
-in Indiana in a way that provides a clear and coherent characterization of changes
-in performance status and growth:
+We identify the following questions as a means to guide our investigation of the
+pandemic's impact on student achievement in Indiana in a way that provides a clear
+and coherent characterization of changes in performance status and growth:
 
-* To what extent did the disruptions in educational programming due to COVID-19 impact student participation in achievement testing?
-* To what extent did the disruptions in educational programming due to COVID-19 impact student academic performance and learning outcomes?
-  - What are the observed changes in student performance (based on achievement test scores and performance classifications) by grade and subject from 2019 to 2021)?
-    * How do these changes vary over students, student groups, schools, and districts?
-    * Are larger changes associated with identifiable student groups, schools, or districts?
-      - Racial/ethnic subgroups
+* To what extent did the disruptions in educational programming due to COVID-19
+  impact student participation in achievement testing?
+* To what extent did the disruptions in educational programming due to COVID-19
+  impact student academic performance and learning outcomes?
+  - What are the observed changes in student performance (based on achievement
+    test scores and performance classifications) by grade and subject from 2019
+    to 2021?
+    * How do these changes vary among students, student groups, schools, and
+      districts?
+    * Are larger changes associated with identifiable student groups, schools,
+      or districts?
+      - Racial/ethnic student groups
       - Special education status
       - English learner status
-      - Poverty status
+      - Socio-economic status
       - Type of community (urban, suburban, rural, etc.)
-      - Mode of instruction
-      - School type (Tpub, Cpub, Nonpub/choice)
-  - What are the observed changes in student growth by grade and subject from 2019 to 2021?
-    * How do these changes vary over students, student groups, schools, and districts?
-    * Are larger changes associated with identifiable student groups, schools, or districts?
-      - Racial/ethnic subgroups
+      - Mode of instruction (remote, in-person, hybrid)
+      - School type (traditional public, charter public, nonpublic/choice)
+  - What are the observed changes in student growth by grade and subject from
+    2019 to 2021?
+    * How do these changes vary among students, student groups, schools, and
+      districts?
+    * Are larger changes associated with identifiable student groups, schools,
+      or districts?
+      - Racial/ethnic student groups
       - Special education status
       - English learner status
-      - Poverty status
+      - Socio-economic status
       - Type of community (urban, suburban, rural, etc)
-      - Mode of instruction
-      - School type (Tpub, Cpub, Nonpub/choice)
-* What is the projected time for recovery of unfinished learning, overall, and by district, school, and student groups?
+      - Mode of instruction (remote, in-person, hybrid)
+      - School type (traditional public, charter public, nonpublic/choice)
+* What is the projected time for recovery of unfinished learning overall and by
+  district, school, and student groups?
 
 
 #  Summary of Results
 
 ## Achievement
 
-Pandemic related impact on academic achievement was investigated for two of the three data sources (ILEARN and WIDA-ACCESS).
+Student achievement is the most frequently used data from academic assessments.
+Often reported as student proficiency, the result at the student level is often
+summarized as percent of students scoring proficient at the school, corporation,
+or state level. Change in percent proficient is often used as part of accountability
+system goal setting.
 
+When quantifying pandemic related academic impact, most laypeople seek to compare
+where students were before the pandemic with where they are today. The comparison
+most often performed is to examine changes (decreases) in percent proficient.
+Changes in percent proficient are, in general, a crude indicator of academic
+impact due to the fact that performance is considered at a single point on the
+scale as well as the possibility of changing student group composition.
+
+Given the size of the academic impacts revealed together with Indiana's excellent
+participation rate, changes in percent proficient, though crude, are useful as a
+means of indicating how big the impacts are. In our analysis of the data, percent
+proficient changes were augmented with analyses of mean scale score differences
+with both unmatched and propensity score matched to calculate changes in terms
+of effect size.
 
 ### ILEARN achievement
 
-Due to ILEARN's very high participation rates in 2021 and minimal enrollment shifts, we compare aggregate scores from 2019 and 2021 without making
-any adjustments for non-participation. Comparison group level grade by content area results in 2021 to those in 2019 shows steep declines in the usually reported percent proficient. Similar declines are observed when looking at mean scale scores.
+When comparing 2021 to 2019 ILEARN by grade, content area, and demographic subgroup,
+the results show steep declines in percent proficient as well as mean scale score.
 
-* Declines in percent proficient ranged from 7 to 9 percent in ELA and 9 to 14 percent in mathematics. For reference, historical year-over-year improvement in percent proficient in Indiana is usually between 1 and 2 percent
-* Effect size declines in achievement were large, ranging between 0.2 and 0.4 depending upon grade and content area.
+* Declines in percent proficient ranged from 6.2 to 8.6 percent in English/language
+  arts and 9.2 to 13.4 percent in mathematics. For reference, historical year-over-year
+  improvement in percent proficient in Indiana is usually between 1 and 2 percent.
+* Effect size declines based upon mean scale score decreases in achievement were
+  large, ranging between 0.2 and 0.4 depending upon grade and content area.
+* Declines in percent proficient by ethnicity across grades ranged from 6.7 to 8.2
+  percent in English/language arts and between 10.9 and 12.4 percent in mathematics.
+* Declines in percent proficient for students receiving free/reduced price lunch
+  were 7.9 and 10.8 percent in English/language arts and mathematics, respectively.
+  Corresponding declines for students not receiving free/reduced price lunch were
+  7.6 and 11.4 percent.
+* Declines in percent proficient for special education students were 2.8 and 4.5
+  percent in English/language arts and mathematics, respectively. Corresponding
+  declines for general education students were 8.2 and 12.0 percent. Smaller
+  declines for special education students is due to relatively small percentages
+  of students classified as proficient. Student growth results shown later provide
+  a clearer picture of impact for this group.
+* Declines in percent proficient for ELLs were 4.6 and 9.0 percent for English/language
+  arts and mathematics, respectively. For non ELLs the declines were 7.0 and 10.4
+  percent.
+* Declines in percent proficient for Males/Females in English/language arts and
+  mathematics were 6.9/8.1 percent and 9.6/12.2 percent, respectively.
+* Declines in percent proficient by school and school corporation were wide spread
+  ranging from very large decreases in percent proficient/mean scale score to
+  modest increases.
+
+As these results indicate, decreases in achievement by students in Indiana between
+2019 and 2021 were substantial. Declines were larger in mathematics than in
+English/language arts but were widespread and fairly uniform by demographic
+subgroups.
 
 ### WIDA-ACCESS achievement
 
-To be added.
+WIDA-ACCESS reports achievement using both a ordinal scale ranging from 1 to 6
+with increments of 0.1 as well as a vertical scale allowing for cross grade
+comparison of scores. The ordinal scale is the more commonly used and we use that
+scale to report status changes from 2020 to 2021. Growth summaries for WIDA-ACCESS
+which are a superior indicator of academic impact are provided in the next section.
 
+* Change in the median achievement level from 2020 to 2021 ranged from a decline
+  of 0.3 to an increase of 0.1.
+* Effect size changes were larger for elementary school ELL students than for
+  middle and high school students.
+* Modest to no declines were observed for high school ELL students. Research on
+  this is ongoing but early evidence suggests little to no academic impact due
+  to ineffectual rates of learning pre-COVID.
 
 
 ##  Growth
 
-Pandemic related impact on academic growth was investigated for each of the three data sources using historical student growth data for each
-of the three data sources. The extent to which student academic growth slowed down is an indication of the extent to which the
-pandemic had on the students academically. The following growth data was utilized from each of the three data sources:
+Pandemic-related impact on academic growth was investigated for each of the three
+data sources using historical student growth data for each of the three data
+sources. The extent to which student academic growth slowed down provides the best
+indication of the extent to which the pandemic had on the students academically
+as it examines the students over time as they experience the pandemic. The
+following growth data was utilized from each of the three data sources:
 
-* NWEA Map growth data from Fall 2019 to Fall 2020, Winter 2019 to Winter 2020-2021, and Fall 2020 to Winter 2020-2021.
-* WIDA-ACCESS growth data from 2020 to 2021 for Grades 1 to 12 in English language proficiency.
-* ILEARN growth data from 2019 to 2021 (note: ILEARN was not administered in 2020) for Grades 5 to 8 in ELA and mathematics.
+* NWEA-MAP growth data from fall 2019 to fall 2020, winter 2019 to winter 2020-2021,
+  and fall 2020 to winter 2020-2021.
+* WIDA-ACCESS growth data from 2020 to 2021 for Grades 1 to 12 in English language
+  proficiency for English language learners.
+* ILEARN growth data from 2019 to 2021 (note: ILEARN was not administered in 2020)
+  for Grades 5 to 8 in English/language arts and mathematics.
 
-For each data source, historical growth norms (i.e., baseline SGPs) are utilized to determine the extent to which student learning
-has slowed down during the pandemic. For ILEARN, 2019 was the pre-covid base year from which historical growth norms are created. For WIDA-ACCESS, 2020
-was the pre-covid base year from which historical growth normed are derived. For NWEA-MAP, nationally representative, historical growth norms
-currently employ data from 2019 (see [NWEA 2020 Map Growth technical report](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)).
+For each data source, historical growth norms (i.e., baseline student growth
+percentiles (SGPs)) are utilized to determine the extent to which student learning
+has slowed down during the pandemic. For ILEARN, 2019 was the pre-COVID base year
+from which historical growth norms are derived. For WIDA-ACCESS, 2020 was the
+pre-COVID base year from which historical growth normed are derived. For NWEA-MAP,
+nationally representative, historical growth norms currently employ data from 2019
+(see [NWEA-MAP 2020 Growth technical report](https://teach.mapnwea.org/impl/normsResearchStudy.pdf)).
 
-For the historical growth norming population, the median SGP for the population is 50. Thus, in 2021, deviation (below) 50 is indicative of the extent
-to which learning has been impeded by the pandemic.
+For the historical growth norming population, the median SGP for the population
+is 50. That is, pre-pandemic, students in the state grew, on average, at a rate
+of 50. Deviations below 50 are indicative of the extent to which learning has
+been impeded by the pandemic.
 
 
-### NWEA Map growth
+### NWEA-MAP growth
 
-Growth results from NWEA Map reflect student performance prior in the pandemic to both ILEARN and WIDA-ACCESS. Academic impact based upon NWEA results
-suggests
+Growth results from NWEA-MAP reflect student performance at an earlier stage in
+the pandemic than both ILEARN and WIDA-ACCESS growth results. The results derive
+from Fall 2020 MAP administration and Winter 2020-2021 MAP administration. As part
+of data provided by NWEA, historically normed growth (conditional growth percentiles)
+are supplied and used to investigate the academic impact of the pandemic on the
+subset of students taking the test in Indiana.
+
+A caveat to current interpretation of NWEA-MAP growth. Historical growth norms
+calculated by NWEA are national in scope and thus for the base year growth for
+the national norming sample would be 50. Unlike state derived norms, the pre-COVID
+growth for Indiana may be different than 50. We are in the process of getting
+historical data that will allow for an exact calculation of pre-COVID growth for
+Indiana students with which to compare growth. For this discussion we use 50 as
+a point of comparison which suffices for the current discussion.
+
+* Fall-to-Fall median conditional growth percentiles for Indiana students taking
+  the MAP ranged from 22 to 57 in English/language arts and from 28 to 53 in
+  mathematics. Mathematics was more significantly impacted than English/language arts.
+* There was substantial variation by grade in terms of Fall-to-Fall student growth.
+  For English/language arts elementary schools grades showed larger declines in
+  growth than did middle/high school grades. In mathematics showed larger declines
+  than middle/high school grades however the difference was much less than
+  English/language arts.
+* Winter-to-Winter median conditional growth percentiles showed similar patterns
+  as Fall-to-Fall. This would be expected as both the Fall-to-Fall and Winter-to-Winter
+  cover a pre-pandemic to pandemic time frame. Median conditional growth percentiles
+  ranged from 14 to 47 in mathematics and 28 to 50 in English/language arts.
+* Fall-to-Winter growth percentiles, by contrast, capture learning at two points
+  during the pandemic. Instead of growth indicating how much student learning has
+  slowed down since the pandemic started, Fall-to-Winter growth would indicate
+  whether student learning during the pandemic is on par with prior years. In
+  both English/language arts and mathematics, median Fall-to-Winter conditional
+  growth percentiles ranged from the mid 40s to 50. Assuming Indiana students
+  grew historically between 50 and 55 relative to national norms, Fall-to-Winter
+  growth results suggested impeded growth rates continuing during the 2020-2021
+  academic year -- though not as slow as indicated in the early stages of the pandemic.
+
+Since Fall 2020, NWEA has produced [several reports](https://www.nwea.org/research/theme/covid-19-and-schools/)
+indicating the national view academic impact based upon the data they collect.
+Results from Indiana are consistent with findings in those reports showing larger
+impacts in mathematics than reading, larger impacts in elementary school grades
+than middle school grades.
 
 
 ### WIDA-ACCESS growth
 
-WIDA-ACCESS growth indicates substantial academic impact for elementary school grades, moderate impact for middle school grades, and modest to no impact
-for high school grades. Because academic impact involves comparisons to pre-pandemic performance, modest to no impact could either imply a student
-group thriving during the pandemic (relative to most others who were impacted) or lackluster performance pre-pandemic.
+WIDA-ACCESS growth utilizes Indiana based historical growth norms with 2020 as the
+base year. Decreases from 2020 to 2021 using these historical norms is indicative
+of slower learning. Growth associated with WIDA-ACCESS are traditionally
+growth-to-standard analyses where the growth goal is reaching English language
+proficiency based upon a multi-year time frame. Slower growth for students from
+2020 to 2021 means higher growth targets for students if the time line for reaching
+English language proficiency remains the same.
 
-* By grade, median baseline SGPs for ELA exhibited decreases by 10 and 19 point drop (from 50 in 2020).
+* By grade, median baseline SGPs for English language learners exhibited decreases
+  between 10- and 19-points (from 50 in 2020).
+* In general, median baseline SGP declines for elementary school grades approached
+  20 for elementary schools (median SGPs in low to mid 30s), approached 10 for
+  middle schools (median SGPs in low to mid 40s). For high school, there were not
+  declines but instead modest improvement.
+* Results for high school suggesting no impact and some improvement could be
+  indicative of either lackluster pre-pandemic growth or of those students'
+  English language learning resiliency during the pandemic.
+
+WIDA has done analyses of results across their entire consortium and recently
+indicated that declines in speaking fluency are primarily driving the decreases
+in the overall scores that they are observing. Preliminary analysis of sub-scale
+results on WIDA-ACCESS confirms that finding with Indiana data.
 
 
 ### ILEARN growth
 
-ILEARN growth indicates substantial academic impact due to the pandemic. In general, academic impacts in mathematics were larger than they were in ELA.
+ILEARN growth indicates substantial academic impact due to the pandemic. In general,
+academic impacts in mathematics were larger than they were in English/language arts.
 
-* By grade, median baseline SGPs for ELA exhibited between a 10 and 11 point drop (from 50 in 2019). In mathematics the decreases ranged between 19 and 22. Decreases in ELA are associated with medium effect sizes where as those in mathematics are large.
-* By ethnicity decreases in median baseline SGPs for ELA were between 10 and 14. In mathematics the decreases ranged from 19 to 24.
-* By free/reduced lunch status, decreases in median baseline SGPs for ELA were between 9 and 12. In mathematics the decreases ranged between 19 and 20.
-* By special education status, decreases in median baseline SGPs for ELA were 11 points. In mathematics the decrease was 7 (going from 36 in 2019 to 29 in 2021). The modest decrease during the pandemic in mathematics seems to suggest that growth prior to the pandemic was rather weak so that pandemic disruptions did little to drive learning down less than it already is.
-* By English learner status, decrease in baseline median student growth percentiles was 14. In mathematics the decrease was 19.
-* By gender, the decrease for males in ELA and mathematics was 12 and 17, respectively. For females the decreases are 10 and 22.
-* By mode of education (Hybrid, In-Person, Remote) the decreases in ELA were 8, 11, and 17, respectively. For mathematics the decreases were 23, 14, and 32, respectively.
-* Students grouped by starting (i.e., 2019) scale score decile demonstrated differing levels of academic impact dependent upon grade and content area. In middle school mathematics, high achieving students demonstrated greater academic impact than lower achieving students.
-* Schools and school corporations demonstrate highly varied levels of academic impact ranging from severe to no impact/improvement.
+* By grade, decreases in median baseline SGPs for English/language arts ranged
+  between a 10- and 11-point drop (from 50 in 2019). In mathematics the decreases
+  ranged between 19 and 22 points. Decreases in English/language arts are associated
+  with medium effect sizes whereas those in mathematics are large.
+* By ethnicity, decreases in median baseline SGPs for English/language arts ranged
+  between a 10- and 14-point drop. In mathematics the decreases ranged between
+  19 and 24.
+* By free/reduced lunch status, decreases in median baseline SGPs for English/language
+  arts ranged between a 9- and 12-point drop. In mathematics the decreases ranged
+  between 19 and 20.
+* By special education status, the decrease in median baseline SGPs for English/language
+  arts was 11 points. In mathematics the decrease was 7, going from 36 in 2019
+  to 29 in 2021. The modest decrease in mathematics during the pandemic seems to
+  suggest that growth prior to the pandemic was rather weak so that pandemic
+  disruptions did little to drive learning down less than it already was.
+* By English learner status, the decrease in baseline median SGPs for English/language
+  arts was 14. In mathematics the decrease was 19.
+* By gender, the decrease in median baseline SGPs for males in English/language
+  arts and mathematics was 12 and 17, respectively. For females the decreases
+  were 10 and 22, respectively.
+* By mode of instruction (Hybrid, In-Person, Remote), the decreases in median
+  baseline SGPs for English/language arts were 8, 11, and 17, respectively. For
+  mathematics the decreases were 23, 14, and 32, respectively.
+* Students grouped by starting (i.e., 2019) scale score decile demonstrated
+  differing levels of academic impact dependent upon grade and content area. In
+  middle school mathematics, higher achieving students demonstrated greater
+  academic impact than lower achieving students.
+* Schools and school corporations demonstrate highly varied levels of academic
+  impact ranging from severe to no impact/improvement.
+
+ILEARN growth results confirm what analyses with NWEA-MAP and WIDA-ACCESS indicate:
+academic impacts due to the pandemic are large in both English/language arts and
+mathematics. Unlike NWEA-MAP, the standards aligned ILEARN shows more substantial
+impacts across all grades. The results paint a dire picture with regard to
+unprecedented academic impact. Recovery from such that will require unprecedented
+recovery efforts.
 
 
 ## Academic Recovery
 
-Academic impact results consistently show moderate to severe impact. Characterization of impact as moderate, large, or severe derive both from effect
-size calculations of what changes in performance historically look like as well as a decade of use of achievement and growth data as part of state accountability systems. The large effect sizes/low growth results associated with state level data are unprecedented. Deviations of this magnitude
-are most frequently seen with underperforming schools, but never with entire states. To that end, recovery will almost certainly require efforts that
-have not been employed previously.
+The academic impact results presented consistently show moderate to severe impact.
+These results are essential for mapping out viable plans for recovery for students.
+Without knowing the academic impact, it is impossible to understand the scope of
+the recovery effort necessary.
 
-Depending upon school and school corporation impact analyses, tailored solutions will be necessary to facilitate complete academic recovery.
+Characterization of impact as moderate, large, or severe derive both from effect
+size calculations of what changes in performance historically look like as well
+as a decade of use of achievement and growth data as part of state accountability
+systems. The large effect sizes/low growth results associated with state level
+data are unprecedented. Deviations of this magnitude are most frequently seen
+with underperforming schools, but never with entire states. To that end, recovery
+will almost certainly require efforts that have not been employed previously.
+
+In particular, based upon level of academic impact, we propose three categories
+of assistance based upon assessed impact:
+
+- **Large to Severe Impact:** Implies academic recovery exceeding two years and
+  likely requiring supplemental academic support.
+- **Moderate Impact:** Implies academic recovery of up to two year and likely
+  requiring some supplemental academic support.
+- **Modest to No Impact:** Implies little deviation from what was observed
+  historically. Caution in interpreting this group should be exercised particularly
+  when historical performance for a group is poor.
+
+Depending upon school and school corporation impact analyses, tailored solutions
+will be necessary to facilitate academic recovery. For example, severely impacted
+schools who prior to the pandemic demonstrated excellent rates of student learning
+likely require just enough assistance to get back to what they were doing. By
+contrast, severely impacted schools who prior to the pandemic were struggling
+will need to improve above-and-beyond the prior status quo. Rates of learning
+necessary to recover (i.e., accelerated learning) will be necessary on a scale
+never before seen. Historically, only a small percentage of schools have demonstrated
+rates of learning that almost the entire state of students need to recover.
+
+
+### What's Next?
+
+As of August, 2021, we are still in the midst of a global pandemic. The results of this study represent
+the first chapters in an unfolding story, providing an intial glimpse into who was impacted, in what they
+were impacted, and how much they were impacted.
+
+* The vast majority of students in the state of Indiana exhibited some degree of negative academic impact due to the
+pandemic. Given the uniform nature of the impacts observed across grades, it seems prudent to assume that similar, large
+impacts would be observed in non-tested grades (e.g., grades K, 1, 2, 9, 10, 11, 12) were data available. Demographic 
+subgroups were similarly impacted though some academic subgroups appeared to suffer larger impacts than others.
+* Of the content areas investigated, mathematics learning was impacted to a greater extent than Englisn/language arts.
+Given the large impacts in both content area, it would be prudent to assume that impacts in non-tested content areas (e.g. science and
+social studies) are similarly large.
+* The extent of the academic impact is unprecedented and large. The impacts are so large that stakeholders should expect
+recovery to be a sustained, multi-year effort requiring supplemental educational supports necessary to accelerate learning.
+
+As the 2021-2022 academic year begins, efforts directed toward ameliorating the academic impacts of the pandemic should take center stage.
+The report provides a first glimpse of the task at hand. Indiana's courage to look at the problem is a necessary first step toward
+correcting that problem.

@@ -78,7 +78,7 @@ Indiana_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR := shift(ACHIEVEMENT_LEVEL, 1), 
 
 ##    Standardize SCALE_SCORE by CONTENT_AREA and GRADE using 2019 norms
 Indiana_SGP_LONG_Data[, SCALE_SCORE_STANDARDIZED := Z(.SD, "SCALE_SCORE", reference.year = "2019"), by = list(CONTENT_AREA, GRADE), .SDcols = c("YEAR", "CONTENT_AREA", "GRADE", "SCALE_SCORE")]
-Indiana_SGP_LONG_Data[, as.list(round(summary(SCALE_SCORE_STANDARDIZED), 3)), keyby = c("YEAR", "CONTENT_AREA", "GRADE")]
+# Indiana_SGP_LONG_Data[, as.list(round(summary(SCALE_SCORE_STANDARDIZED), 3)), keyby = c("YEAR", "CONTENT_AREA", "GRADE")]
 
 setkeyv(Indiana_SGP_LONG_Data, shift.key)
 
@@ -133,11 +133,11 @@ Indiana_SGP_LONG_Data[, ACHIEVEMENT_ProfandAbove := plyr::mapvalues(ACHIEVEMENT_
 
 Indiana_SGP_LONG_Data$ACHIEVEMENT_ProfandAbove[is.na(Indiana_SGP_LONG_Data$ACHIEVEMENT_LEVEL)] <- NA
 
-Indiana_SGP_LONG_Data[, PRIOR_ACHIEVEMENT_ProfandAbove := plyr::mapvalues(ACHIEVEMENT_LEVEL_PRIOR,
-                           from = c("Level 1", "Level 2", "Level 3",
-                                    "Level 4", "Level 5", "No Score"),
-                           to  =  c("Not Proficient", "Not Proficient", "Not Proficient",
-                                    "Proficient", "Proficient", NA))]
+Indiana_SGP_LONG_Data[, PRIOR_ACHIEVEMENT_ProfandAbove := plyr::mapvalues(ACHIEVEMENT_LEVEL_ORIGINAL_PRIOR,
+                           from = c("Below/Approaching Proficiency", "Did Not Pass",
+                                    "Above Proficiency", "At Proficiency", "Pass", "Pass +"),
+                           to  =  c("Not Proficient", "Not Proficient",
+                                    "Proficient", "Proficient", "Proficient", "Proficient"))]
 
 ###   Remove redundant/replaced variables
 Indiana_SGP_LONG_Data[, c("SCALE_SCORE_PRIOR", "SCALE_SCORE_PRIOR_STANDARDIZED", "SCALE_SCORE_PRIOR_BASELINE", "SCALE_SCORE_PRIOR_STANDARDIZED_BASELINE") := NULL]
@@ -208,22 +208,34 @@ WIDA_IN_SGP_LONG_Data[which(duplicated(WIDA_IN_SGP_LONG_Data, by=key(WIDA_IN_SGP
 
 WIDA_IN_SGP_LONG_Data <- WIDA_IN_SGP_LONG_Data[VALID_CASE=="VALID_CASE"]
 
-###   Create Lagged Achievement variables that include missing scores (and others potentially)
+###   Create Lagged Score (SCALE and STANDARDIZED) variables that include missing scores (and others potentially)
 shift.key <- c("ID", "CONTENT_AREA", "YEAR", "GRADE", "VALID_CASE")
+
+##    Standardize SCALE_SCORE by CONTENT_AREA and GRADE using 2019 norms
+WIDA_IN_SGP_LONG_Data[, SCALE_SCORE_STANDARDIZED := Z(.SD, "SCALE_SCORE", reference.year = "2020"), by = list(CONTENT_AREA, GRADE), .SDcols = c("YEAR", "CONTENT_AREA", "GRADE", "SCALE_SCORE")]
+# WIDA_IN_SGP_LONG_Data[, as.list(round(summary(SCALE_SCORE_STANDARDIZED), 3)), keyby = c("YEAR", "CONTENT_AREA", "GRADE")]
+
+setkeyv(WIDA_IN_SGP_LONG_Data, shift.key)
+
+WIDA_IN_SGP_LONG_Data[, c("SCALE_SCORE_PRIOR_1YEAR", "SCALE_SCORE_PRIOR_2YEAR") := shift(SCALE_SCORE, 1:2), by = list(ID, CONTENT_AREA)]
+WIDA_IN_SGP_LONG_Data[, c("SCALE_SCORE_PRIOR_STANDARDIZED_1YEAR", "SCALE_SCORE_PRIOR_STANDARDIZED_2YEAR") := shift(SCALE_SCORE_STANDARDIZED, 1:2), by = list(ID, CONTENT_AREA)]
+
+# table(WIDA_IN_SGP_LONG_Data[, YEAR, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL)
+# table(WIDA_IN_SGP_LONG_Data[, GRADE, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL) # Remove 2YEAR priors for Grades 0 & 1 - repeaters
+WIDA_IN_SGP_LONG_Data[GRADE %in% c(0, 1), SCALE_SCORE_PRIOR_2YEAR := NA]
+WIDA_IN_SGP_LONG_Data[GRADE == 0, SCALE_SCORE_PRIOR_1YEAR := NA]
+WIDA_IN_SGP_LONG_Data[GRADE %in% c(0, 1), SCALE_SCORE_PRIOR_STANDARDIZED_2YEAR := NA]
+WIDA_IN_SGP_LONG_Data[GRADE == 0, SCALE_SCORE_PRIOR_STANDARDIZED_1YEAR := NA]
+# table(WIDA_IN_SGP_LONG_Data[YEAR=="2021", is.na(SCALE_SCORE_PRIOR), is.na(SCALE_SCORE_PRIOR_1YEAR)], exclude=NULL) # No SCALE_SCORE_PRIOR_BASELINE in WIDA
+# cor(WIDA_IN_SGP_LONG_Data[, SCALE_SCORE_PRIOR, SCALE_SCORE_PRIOR_1YEAR], use="complete.obs") # Perfect.
+
+###   Create Lagged Achievement variables that include missing scores (and others potentially)
 setkeyv(WIDA_IN_SGP_LONG_Data, shift.key)
 
 # WIDA_IN_SGP_LONG_Data[, ACH_LEV_P2 := as.character(NA)] # for testing - create a alternate version first and check equality for non-NA values
 WIDA_IN_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR := shift(ACHIEVEMENT_LEVEL, 1), by = list(ID, CONTENT_AREA)]
 # table(WIDA_IN_SGP_LONG_Data[, ACHIEVEMENT_LEVEL_PRIOR, ACH_LEV_P2], exclude=NULL)
 
-###   Create Lagged Scale Score variables that include missing scores (and others potentially)
-WIDA_IN_SGP_LONG_Data[, c("SCALE_SCORE_PRIOR_1YEAR", "SCALE_SCORE_PRIOR_2YEAR") := shift(SCALE_SCORE, 1:2), by = list(ID, CONTENT_AREA)]
-# table(WIDA_IN_SGP_LONG_Data[, YEAR, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL)
-# table(WIDA_IN_SGP_LONG_Data[, GRADE, is.na(SCALE_SCORE_PRIOR_2YEAR)], exclude=NULL) # Remove 2YEAR priors for Grades 0 & 1 - repeaters
-WIDA_IN_SGP_LONG_Data[GRADE %in% c(0, 1), SCALE_SCORE_PRIOR_2YEAR := NA]
-WIDA_IN_SGP_LONG_Data[GRADE == 0, SCALE_SCORE_PRIOR_1YEAR := NA]
-# table(WIDA_IN_SGP_LONG_Data[YEAR=="2021", is.na(SCALE_SCORE_PRIOR), is.na(SCALE_SCORE_PRIOR_1YEAR)], exclude=NULL) # No SCALE_SCORE_PRIOR_BASELINE in WIDA
-# cor(WIDA_IN_SGP_LONG_Data[, SCALE_SCORE_PRIOR, SCALE_SCORE_PRIOR_1YEAR], use="complete.obs") # Perfect.
 
 ###   Create Prior Score Deciles
 ##    Establish a decile lookup based on 2019 & 2020 for each GRADE

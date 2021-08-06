@@ -41,34 +41,39 @@
 
 
 ###   Executive Summary tables
+	###  Table 1. Assessment Participation Rates from 2018 to 2021
 
-	###  NOT INCLUDED NOW - But this is how you could do it...
-	###  Table 1. Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year
+	#  Assessment    2018    2019    2020    2021
+	# ------------ ------- -------- ------- ------
+	# ISTEP ELA     > 99%    ---      ---     ---
+	# ISTEP Math    > 99%    ---      ---     ---
+	# ILEARN ELA     ---     > 99%    ---     > 99%
+	# ILEARN Math    ---     > 99%    ---     > 99%
+	# WIDA-ACCESS   > 99%    > 99%    > 99%   > 99%
 
-	# vi_tbl <- data.table::fread(text=
-	# ",State Overall, Public School Corporations, Public Charter Schools,Other Public Institutions
-	# Used Virtual Instruction for COVID-Related Reasons,90.0%,90.7%,87.5%,100.0%
-	# Used Virtual Instruction for Non-COVID-Related Reasons,7.5%,8.6%,4.8%,0.0%
-	# Did Not Use Virtual Instruction,1.5%,0.7%,3.8%,0.0%
-	# Established Virtual Charter School,1.0%,0.0%,3.8%,0.0%", header=TRUE, data.table = FALSE)
-	#
-	# row.names(vi_tbl) <- NULL
-	# vi_tbl <- as.matrix(vi_tbl)
-	# colnames(vi_tbl) <- c("", "\nState Overall", "Public School\nCorporations",
-	#                       "Public Charter\nSchools","Other Public\nInstitutions")
-	#
-  # vi_tbl <- htmlTable::addHtmlTableStyle(vi_tbl,
-  #   align=paste0('r', paste(rep('c', ncol(vi_tbl)-1), collapse="")),
-  #   css.tspanner.sep = "border-top: 2px solid grey;") # css.table="min-width: 85%;",
-	#
-	# ###  Include VERY small, transparent image to create table title and
-	# knitr::include_graphics("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", dpi=NA, error = FALSE)
+	partic_tbl <- data.table::fread(text=
+	"Assessment, 2018, 2019, 2020, 2021
+	ISTEP ELA,&gt; 99%,---,---,---
+	ISTEP Math,&gt; 99%,---,---,---
+	ILEARN ELA,---,&gt; 99%,---,&gt; 99%
+	ILEARN Math,---,&gt; 99%,---,&gt; 99%
+	WIDA-ACCESS,&gt; 99%,&gt; 99%,&gt; 99%,&gt; 99%", header=TRUE, data.table = FALSE)
 
-	tbl.txt <- ""
-	# tbl.txt <- htmlTable::htmlTable(vi_tbl, rnames=FALSE,
-	# 	tfoot = "Source: 2020-2021 Annual Technology Plan Survey",
-	# 	caption = "Table ExSum 1. Reasons for Implementation of Virtual Instruction during the 2020-2021 School Year")
-	# if (tolower(params$render.format) == "bookdown") tbl.txt <- c("\n\t", tbl.txt, "\n\t")
+	row.names(partic_tbl) <- NULL
+	partic_tbl <- as.matrix(partic_tbl)
+	colnames(partic_tbl) <- c("Assessment", "2018", "2019", "2020", "2021")
+
+  partic_tbl <- htmlTable::addHtmlTableStyle(partic_tbl,
+    align=paste0('r', paste(rep('c', ncol(partic_tbl)-1), collapse="")),
+    css.tspanner.sep = "border-top: 2px solid grey;") # css.table="min-width: 85%;",
+
+	###  Include VERY small, transparent image to create table title and
+	knitr::include_graphics("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", dpi=NA, error = FALSE)
+
+	tbl.txt <- htmlTable::htmlTable(partic_tbl, rnames=FALSE,
+		tfoot = "Source: Indiana Department of Education Office of School Accountability",
+		caption = "Table 1. Assessment Participation Rates from 2018 to 2021")
+	if (tolower(params$render.format) == "bookdown") tbl.txt <- c("\n\t", tbl.txt, "\n\t")
 
 ##    Read in Executive Summary text - render format specific
 	if (tolower(params$render.format) == "bookdown") {
@@ -79,11 +84,15 @@
 
 ##    Replace parameter variables used in the text (e.g., PRM__draft.text__PRM)
   param.to.replace <- unique(do.call(rbind, str_match_all(exec.sum.text, "PRM__\\s*(.*?)\\s*__PRM")))
-  for (i in seq(nrow(param.to.replace))) exec.sum.text <- gsub(param.to.replace[i,1], eval(parse(text=paste0("params[['", param.to.replace[i,2], "']][[1]]"))), exec.sum.text, fixed=TRUE)
+	if (length(param.to.replace) > 0)
+  	for (i in seq(nrow(param.to.replace))) exec.sum.text <-
+					gsub(param.to.replace[i,1], eval(parse(text=paste0("params[['", param.to.replace[i,2], "']][[1]]"))), exec.sum.text, fixed=TRUE)
 
 ##    Replace text variables created above and used in the text (e.g., TXT__test.name.abv__TXT)
   text.to.replace <- unique(do.call(rbind, str_match_all(exec.sum.text, "TXT__\\s*(.*?)\\s*__TXT")))
-  for (i in seq(nrow(text.to.replace))) exec.sum.text <- gsub(text.to.replace[i,1], eval(parse(text=text.to.replace[i,2])), exec.sum.text, fixed=TRUE)
+	if (length(text.to.replace) > 0)
+  	for (i in seq(nrow(text.to.replace))) exec.sum.text <-
+					gsub(text.to.replace[i,1], eval(parse(text=text.to.replace[i,2])), exec.sum.text, fixed=TRUE)
 ```
 
 ```{r, results='asis', echo=FALSE}

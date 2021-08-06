@@ -27,6 +27,9 @@ load("../Data/Report_Analyses.Rdata")
   ##  or create a new one and run all analyses ##
     #  Report_Analyses <- list()
 
+###   Either load an existing `params` object or create one in source file(s)
+load("params_dry_run.rda")
+
 
 #####
 ###   State_Assessment
@@ -52,9 +55,15 @@ source("Report_Analyses/IN_Temporary_Meta_Data.R")  #  source(file="CustomConten
 source("Report_Analyses/IN_Participation_Overall_and_School.R") # `Warning ...: dcast generic in data.table ...  attempt to redirect to the relevant reshape2`
 
 
-###   Quantile Shift Analyses
+###   (School Level) Summary Tables
+source("Report_Analyses/IN_Summary_Table_w_Academic_Impact__School.R")
 
-load("params_dry_run.rda")
+
+###   Academic Impact Plots
+source("Report_Analyses/IN_Academic_Impact_School_bubblePlot.R")
+
+
+###   Quantile Shift Analyses
 beeswarm.plots <- TRUE
 hsf.analysis <- TRUE
 between.inst.ges <- TRUE
@@ -62,6 +71,7 @@ between.inst.ges <- TRUE
 for (assessment in c("State_Assessment", "ELP_Assessment")) {
     source("Report_Analyses/IN_Quantile_Shift_Effects_2021.R")
 }
+
 
 #####
 ###   College_Entrance
