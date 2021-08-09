@@ -4,6 +4,12 @@
 ###   Create/customize/complete the required YAML and RMD file config lists
 #####
 
+###   Set up your R working directory
+setwd("./Documentation")
+
+###   Load required package(s)
+require(Literasee)
+
 ###   Locate the "Universal_Content" directory
 universal.content.path <- file.path("..", "..", "..", "Universal_Content")
 
@@ -11,6 +17,10 @@ universal.content.path <- file.path("..", "..", "..", "Universal_Content")
 ###
 ###   Merge custom and universal config lists
 ###
+
+##   Remove existing objects before (re)running
+if (exists("report.config")) rm(report.config)
+if (exists("rmd.files")) rm(rmd.files)
 
 ##   The "custom.config" list is created to supply unique client/state info.
 ##   It can also be used to override some of the Universal settings (authors, etc.)
@@ -130,3 +140,4 @@ createReportScripts(report_config=report.config, rmd_file_list=rmd.files)
 
 ###   Save report YAML and file configurations
 save(list=c("report.config", "rmd.files"), file = "Report_Configuration_MetaData.rda")
+setwd("..")

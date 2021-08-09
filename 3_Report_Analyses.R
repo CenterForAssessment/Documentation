@@ -33,7 +33,8 @@
 
 
 #####
-###   Save Report_Analyses
+###   Combine all data analyses into `Report_Analyses` and Save
 #####
 
-save(Report_Analyses, file = "./Data/Report_Analyses.Rdata")
+save(Report_Analyses, file = "../Data/Report_Analyses.Rdata")
+setwd("..")

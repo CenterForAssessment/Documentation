@@ -6,12 +6,11 @@
 setwd("./Documentation")
 
 ###   Load/Format/Subset Report Data
-load("./Data/Report_Data.Rdata")
-load("./Data/Report_Analyses.Rdata")
+if (!exists("Report_Data")) load("../Data/Report_Data.Rdata")
+if (!exists("Report_Analyses")) load("../Data/Report_Analyses.Rdata")
 
 ###   Load required packages
 require(Literasee)
-require(SGP)
 
 
 #####
@@ -40,3 +39,5 @@ pagedown::chrome_print(file.path("report", "Goodness_of_Fit_Plots_APPENDIX_A.htm
 if (!file.exists(file.path("site", "downloads"))) dir.create(file.path("site", "downloads"))
 file.copy(file.path("report", "DEMO_COVID_Learning_Loss_Analysis.pdf"), file.path("site", "downloads"), overwrite = TRUE)
 file.copy(file.path("report", "Goodness_of_Fit_Plots_APPENDIX_A.pdf"), file.path("site", "downloads"), overwrite = TRUE)
+
+setwd("..")

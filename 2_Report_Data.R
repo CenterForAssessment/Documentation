@@ -6,13 +6,14 @@
 ###   and (potentially multiple) `Interim_Assessment` data objects.
 #####
 
+
 #####
 ###   State_Assessment
 #####
 
 ###   Load/Format/Subset Report Data
 load("../Data/Demonstration_COVID_SGP_2021_STEP_3c.Rdata")
-Report_Data <- data.table::copy(Demonstration_COVID_SGP@Data)[VALID_CASE == "VALID_CASE" & YEAR %in% c("2019", "2021") & CONTENT_AREA %in% c("ELA", "MATHEMATICS")] # & SCHOOL_ENROLLMENT_STATUS == "Enrolled School: Yes"]
+State_Assessment_LONG_Data <- data.table::copy(Demonstration_COVID_SGP@Data)[VALID_CASE == "VALID_CASE" & YEAR %in% c("2019", "2021") & CONTENT_AREA %in% c("ELA", "MATHEMATICS")] # & SCHOOL_ENROLLMENT_STATUS == "Enrolled School: Yes"]
 
 
 
@@ -33,8 +34,17 @@ Report_Data <- data.table::copy(Demonstration_COVID_SGP@Data)[VALID_CASE == "VAL
 #####
 
 
+
 #####
-###   Save Report_Data
+###   Combine all data sources into `Report_Data` and Save
 #####
 
-save(Report_Data, file = "./Data/Report_Data.Rdata")
+Report_Data <- vector("list", 4);
+names(Report_Data) <- c("State_Assessment", "College_Entrance", "ELP_Assessment", "Interim_Assessment")
+
+Report_Data[["State_Assessment"]] <- copy(State_Assessment_LONG_Data); rm(State_Assessment_LONG_Data)
+
+if (!dir.exists(file.path("..", "Data"))) dir.create(file.path("..", "Data"))
+save(Report_Data, file = file.path("..", "Data", "Report_Data.Rdata"))
+
+setwd("..")
