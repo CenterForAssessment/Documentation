@@ -9,6 +9,28 @@
 ###   may have a `multiple_imputation` analysis.
 #####
 
+
+###   Set up your R working directory
+setwd("./Documentation")
+
+###   Locate the "Universal_Content" directory
+universal.content.path <- file.path("..", "..", "..", "Universal_Content")
+
+###   Load packages used in the Report Analyses (and install/update as necessary)
+source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Packages.R"))
+
+###   Load formated Report_Data from `2_Report_Data.R`
+load("../Data/Report_Data.Rdata")
+
+###   Either load an existing `Report_Analyses` object
+load("../Data/Report_Analyses.Rdata")
+  ##  or create a new one and run all analyses ##
+    #  Report_Analyses <- list()
+
+###   Either load an existing `params` object or create one in source file(s)
+load("params_dry_run.rda")
+
+
 #####
 ###   State_Assessment
 #####
