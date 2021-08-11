@@ -7,6 +7,27 @@
 #####
 
 
+###   Set R working directory to the Documentation folder
+setwd("./Documentation")
+
+###   Load required packages
+require(SGP)
+require(data.table)
+require(plyr)
+
+Z <- function(data_table, var.to.standardize, reference.year = NULL, rm.na = TRUE) {
+  YEAR <- NULL
+  x <- data_table[, get(var.to.standardize)]
+  if (!is.null(reference.year)){
+    y <- data_table[YEAR==reference.year, get(var.to.standardize)]
+  } else y <- x
+  (x - mean(y, na.rm = rm.na)) / sd(y, na.rm = rm.na)
+}
+
+
+###   Locate the "Universal_Content" directory (assume woring directory is ./Documentation)
+universal.content.path <- file.path("..", "..", "..", "Universal_Content")
+
 #####
 ###   State_Assessment
 #####
