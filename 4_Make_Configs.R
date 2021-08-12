@@ -4,12 +4,22 @@
 ###   Create/customize/complete the required YAML and RMD file config lists
 #####
 
+###   Set up your R working directory
+setwd("./Documentation")
+
+###   Load required package(s)
+require(Literasee)
+
 ###   Locate the "Universal_Content" directory
-universal.content.path <- file.path("..", "..", "State_Alt_Analyses", "Universal_Content")
+universal.content.path <- file.path("..", "..", "..", "Universal_Content")
 
 ###
 ###   Merge custom and universal config lists
 ###
+
+##   Remove existing objects before (re)running
+if (exists("report.config")) rm(report.config)
+if (exists("rmd.files")) rm(rmd.files)
 
 ##   The "custom.config" list is created to supply unique client/state info.
 ##   It can also be used to override some of the Universal settings (authors, etc.)
@@ -26,9 +36,9 @@ custom.config <- list(
   ),
   # Override defaults for author/Affil
   top.level = list(             # Title/subtitle, author.names, author.affil, date
-    title = "Student Achievement and Growth during the COVID-19 Pandemic",
-    subtitle = "Academic Impact from a Year of Disruptions",
-    draft = TRUE # default if TRUE - "DRAFT REPORT -- DO NOT CITE OR CIRCULATE" #
+    title = "Academic Impact in a Year of Disruptions",
+    subtitle = "Student Achievement and Growth during the COVID-19 Pandemic",
+    draft = TRUE  #  default if TRUE - "DRAFT REPORT -- DO NOT CITE OR CIRCULATE" #
   ),
   params = list(
     # draft.text = "ALTERNATE DRAFT TEXT",
@@ -77,14 +87,19 @@ custom.config <- list(
       ELP_Assessment = as.character(0:12)
     ),
     demographics = list(
-      State_Assessment = c("ETHNICITY", "FREE_REDUCED_LUNCH_STATUS", "ELL_STATUS", "IEP_STATUS", "GENDER"),
-      College_Entrance = c("ETHNICITY", "FREE_REDUCED_LUNCH_STATUS", "ELL_STATUS", "IEP_STATUS", "GENDER"),
-      ELP_Assessment  =  c("ETHNICITY", "FREE_REDUCED_LUNCH_STATUS", "ELL_STATUS", "IEP_STATUS", "GENDER")
+      State_Assessment = c("ETHNICITY", "GENDER", "FREE_REDUCED_LUNCH_STATUS", "ELL_STATUS", "IEP_STATUS", "GIFTED_TALENTED_PROGRAM_STATUS"),
+      College_Entrance = c("ETHNICITY", "GENDER", "FREE_REDUCED_LUNCH_STATUS", "ELL_STATUS", "IEP_STATUS", "GIFTED_TALENTED_PROGRAM_STATUS"),
+      ELP_Assessment  =  c("ETHNICITY", "GENDER", "FREE_REDUCED_LUNCH_STATUS", "ELL_STATUS", "IEP_STATUS", "GIFTED_TALENTED_PROGRAM_STATUS")
     ),
     gof.path = list(
       State_Assessment = file.path("..", "Goodness_of_Fit"),
       College_Entrance = file.path("..", "Goodness_of_Fit"),
       ELP_Assessment  =  file.path("..", "..", "ACCESS", "Goodness_of_Fit")
+    ),
+    sgp.max.order = list(
+      State_Assessment = 2L,
+      College_Entrance = c(2L),
+      ELP_Assessment = 2L
     )
   )
 )
@@ -95,18 +110,18 @@ source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", 
 
 ##   The following script will merge the rmd.files (universal) and custom.files lists and return 'rmd.files' to be used in next steps
 # custom.files <- list(...) # override defaults if desired.  Otherwise a message that universal list will be used.
-source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
+# source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
 
 ##    Besides adding/reordering Rmd files though custom.files, one can request a
 ##    subset of files. This will result in a truncated report, allowing chapter/section
 ##    editing/development. You always need to include `setup.Rmd` and `params.Rmd`!
 
-# custom.files <- list(
-#   report = list(
-#     file.order = c("setup.Rmd", "params.Rmd", "0_Executive_Summary.Rmd")),
-#   appendices = c())
-#
-# source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
+custom.files <- list(
+  report = list(
+    file.order = c("setup.Rmd", "params.Rmd", "0_Executive_Summary.Rmd")),
+  appendices = c())
+
+source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", "Report_Content.R"))
 
 
 #####
@@ -117,3 +132,4 @@ createReportScripts(report_config=report.config, rmd_file_list=rmd.files)
 
 ###   Save report YAML and file configurations
 save(list=c("report.config", "rmd.files"), file = "CO_Report_Configuration_MetaData.rda")
+setwd("..")
