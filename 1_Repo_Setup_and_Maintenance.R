@@ -19,10 +19,10 @@ source(file.path(universal.content.path, "Learning_Loss_Analysis", "Meta_Data", 
 ###   any custom RMD templates (from "Universal_Content" or another, similar, state)
 
 ###   Load packages required for report setup
-require(Literasee)
-
-template.path <- file.path(universal.content.path, "Learning_Loss_Analysis", "Child_RMD", "Template_Custom_Content")
-setupReportDirectory(custom.content.path = template.path)
+# require(Literasee)
+#
+# template.path <- file.path(universal.content.path, "Learning_Loss_Analysis", "Child_RMD", "Template_Custom_Content")
+# setupReportDirectory(custom.content.path = template.path)
 
 ###   It may be necessary to occasionally update Literasee package assets.
 # updateAssets()
