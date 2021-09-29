@@ -27,17 +27,17 @@ if (exists("rmd.files")) rm(rmd.files)
 
 custom.config <- list(
   client.info = list(
-    state.name = "Demonstration COVID", # required at a minimum
-    state.abv = "D.C.", # for cover page, not SGPstateData
-    city.name = "Washington",
-    organization = "Demonstration Department of Education",
+    state.name = "New Meridian Consortium", # required at a minimum
+    state.abv = "TX", # for cover page, not SGPstateData
+    city.name = "Austin",
+    organization = "New Meridian Corporation",
     org.head = "Joseph R. Biden, Jr.",
-    github.repo = "CenterForAssessment/SGP_Research/tree/master/Demonstration/Learning_Loss_Analysis",
-    acknowledgements = "the entire staff of the DDoE Assessment and Accountability Office, and particularly Maggie Q. Public,"
+    github.repo = "CenterForAssessment/SGP_Research/tree/master/PARCC/Learning_Loss_Analysis",
+    acknowledgements = "the New Meridian and Pearson staff"
   ),
   # Override defaults for author/Affil
   top.level = list(  #  Title/subtitle, author.names, author.affil, date
-    title = "Example Academic Impact Analysis",
+    title = "Education During a Year of Disruptions",
     subtitle = "Student Achievement and Growth during the COVID-19 Pandemic",
     draft = TRUE  #  default if TRUE - "DRAFT REPORT -- DO NOT CITE OR CIRCULATE" #
   ),
@@ -51,13 +51,13 @@ custom.config <- list(
     min.size.school = 15,  #  N size cutoff - exclude SCHOOLs with fewer than X students from summaries/analyses
     min.size.district = 50, # N size cutoff - exclude DISTRICTs with fewer than X students from summaries/analyses
     sgp.abv = list( # SGP package abbreviation for accessing relevant SGPstateData meta-data.
-      State_Assessment = "DEMO_COVID",
+      State_Assessment = "PARCC",
       College_Entrance = c(),
       ELP_Assessment = c(),
       Interim_Assessment = c()
     ),
     years = list(
-      State_Assessment = as.character(c(2017:2019, 2021)),
+      State_Assessment = as.character(c(2016:2019, 2021)),
       College_Entrance = c(),
       ELP_Assessment = c(),
       Interim_Assessment = c()
@@ -75,19 +75,19 @@ custom.config <- list(
       Interim_Assessment = c()
     ),
     test.name = list(
-      State_Assessment = "Demonstration Student Assessment Program",
+      State_Assessment = "Partnership for Assessment of Readiness for College and Careers",
       College_Entrance = c(),
       ELP_Assessment = c(),
       Interim_Assessment = c()
     ),
     test.abv = list(
-      State_Assessment = "DEMO_COVID",
+      State_Assessment = "PARCC",
       College_Entrance = c(),
       ELP_Assessment = c(),
       Interim_Assessment = c()
     ),
     test.url = list(
-      State_Assessment = "https://centerforassessment.github.io/SGPdata/",
+      State_Assessment = "https://resources.newmeridiancorp.org/",
       College_Entrance = c(),
       ELP_Assessment = c(),
       Interim_Assessment = c()
@@ -99,7 +99,7 @@ custom.config <- list(
       Interim_Assessment = c()
     ),
     demographics = list(
-      State_Assessment = c("ETHNICITY", "FREE_REDUCED_LUNCH_STATUS", "ELL_STATUS", "IEP_STATUS", "GENDER"),
+      State_Assessment = c("EconomicDisadvantageStatus",  "EnglishLearnerEL", "StudentWithDisabilities", "Sex", "FederalRaceEthnicity"),
       College_Entrance = c(),
       ELP_Assessment  =  c(),
       Interim_Assessment = c()

@@ -1,11 +1,12 @@
-An Example Documentation Folder
-================================
+PARCC Academic Impact Documentation Folder
+============================================
 
 #  Purpose
 
-This is a template for a "Documentation" directory that one might use (copy/paste)
-into a project from which to build out `pagedown` report(s) and a `bookdown`
-website using the child RMD files included in the Universal_Content repo.
+This is the PARCC branch of the "Documentation" repository to be modified and
+extended/customized for their Learning Loss/COVID academic impact report. Both
+`pagedown` report(s) and a `bookdown` websites will be created using the child
+RMD files included in the Universal_Content repo and their Custom_Content folder.
 
 #  Five steps to report generation
 

@@ -28,12 +28,52 @@ load("../Data/Report_Analyses.Rdata")
     #  Report_Analyses <- list()
 
 ###   Either load an existing `params` object or create one in source file(s)
-load("params_dry_run.rda")
+# load("params_dry_run.rda")
+# if (!exists("params")) {
+#   ###   Load required packages and custom functions
+#   require(SGP)
+#   require(Literasee)
+#   if (exists("assessment")) {tmp.assessment <- assessment; chg.assess <- TRUE} else chg.assess <- FALSE
+#   setwd("..")
+#   source("./Documentation/4_Make_Configs.R")
+#   setwd("./Documentation")
+#   params <- report.config$params
+#   source(knitr::purl(file.path(universal.content.path, "Learning_Loss_Analysis", "Child_RMD", "params.Rmd"), quiet=TRUE))
+#   file.remove("params.R")
+#   if (chg.assess) tmp.assessment -> assessment
+# }
 
 
 #####
 ###   State_Assessment
 #####
+
+###   Declare an assessment flavor (or loop around source(...) files)
+assessment <- "State_Assessment"
+
+###   (School Level) Summary Tables
+require(cfaTools)
+Report_Analyses[["Summary_Tables"]][[assessment]][["Academic_Impact"]][["SCHOOL_NUMBER"]] <-
+      academicImpactSummary(
+          sgp_data = Report_Data[[assessment]],
+          state="PARCC",
+          current_year="2020_2021.2", # tail(params[["years"]][[assessment]], 1),
+          prior_year="2018_2019.2", # tail(params[["years"]][[assessment]], 2)[-2],
+          content_areas=c("ELA", "MATHEMATICS", "ALGEBRA_I", "ALGEBRA_II", "GEOMETRY"), # params[["GL_subjects"]][[assessment]],
+          all_grades=c(3:8, 10, 11, "EOCT"), # params[["grades"]][[assessment]],
+          sgp_grades=c(5:8, 10, 11, "EOCT"), # params[["sgp.grades"]][[assessment]],
+          aggregation_group="SCHOOL_NUMBER")[["SCHOOL_NUMBER"]]
+
+Report_Analyses[["Summary_Tables"]][[assessment]][["Academic_Impact"]][["SCHOOL_NUMBER_by_GRADE"]] <-
+      academicImpactSummary(
+          sgp_data = Report_Data[[assessment]],
+          state="PARCC",
+          current_year="2020_2021.2", # tail(params[["years"]][[assessment]], 1),
+          prior_year="2018_2019.2", # tail(params[["years"]][[assessment]], 2)[-2],
+          content_areas=c("ELA", "MATHEMATICS", "ALGEBRA_I", "ALGEBRA_II", "GEOMETRY"), # params[["GL_subjects"]][[assessment]],
+          all_grades=c(3:11, "EOCT"), # params[["grades"]][[assessment]],
+          sgp_grades=c(5:11, "EOCT"), # params[["sgp.grades"]][[assessment]],
+          aggregation_group=c("SCHOOL_NUMBER", "GRADE"))[["SCHOOL_NUMBER_by_GRADE"]]
 
 
 
